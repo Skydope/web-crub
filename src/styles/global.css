@@ -1,0 +1,25 @@
+
+@tailwind base;
+@tailwind components;
+
+.titulo {
+    @apply font-encabezado text-4xl font-bold p-4 bg-institucional-azul-300 text-white mb-8 rounded-t-lg;
+}
+
+.diplomatura,
+.tecnicatura,
+.ingenieria,
+.licenciatura {
+    @apply font-encabezado text-2xl sm:text-3xl p-4 m-3 font-semibold mb-3 text-gray-800 ;
+}
+
+.info-diplomatura,
+.info-tecnicatura,
+.info-ingenieria,
+.info-licenciatura,
+.casa-lp,
+.arte {
+    @apply list-none mb-4 font-cuerpo text-lg p-3 text-gray-800 leading-relaxed bg-gray-50 rounded-lg hover:bg-gray-100;
+}
+
+@tailwind utilities;

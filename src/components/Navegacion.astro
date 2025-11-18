@@ -1,0 +1,73 @@
+---
+import menuItems, { type SeccionMenu } from '../data/menu'
+
+const tieneSubcategorias = (seccion: SeccionMenu) =>
+  seccion.subcategorias && seccion.subcategorias.length > 0
+
+const BASE_COLOR = 'text-black hover:text-institucional-azul-100'
+const BG_HOVER = 'hover:bg-institucional-azul-700'
+const SUBCAT_BG = 'bg-institucional-azul-DEFAULT'
+---
+
+<nav class="hidden md:block px-4">
+  <ul class="flex space-x-2 lg:space-x-4">
+    {
+      menuItems.map((seccion) => (
+        <li
+          class:list={[
+            'relative group transition duration-300',
+            { 'con-subcategorias': tieneSubcategorias(seccion) },
+          ]}
+        >
+          {tieneSubcategorias(seccion) ? (
+            <span
+              class={`${BASE_COLOR} ${BG_HOVER} cursor-default font-cuerpo px-3 py-2 rounded-md text-sm font-medium flex items-center`}
+            >
+              {seccion.nombre}
+              <svg
+                class="w-4 h-4 ml-1 transform group-hover:rotate-180 transition duration-300"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </span>
+          ) : (
+            <a
+              href={seccion.url || '#'}
+              class={`${BASE_COLOR} ${BG_HOVER} font-cuerpo px-3 py-2 rounded-md text-sm font-medium block`}
+            >
+              {seccion.nombre}
+            </a>
+          )}
+
+          {tieneSubcategorias(seccion) && (
+            <ul
+              class:list={[
+                `absolute left-0 mt-0 pt-2 ${SUBCAT_BG} rounded-b-lg shadow-xl min-w-[200px]`,
+                'opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300',
+              ]}
+            >
+              {(seccion.subcategorias || []).map((sub) => (
+                <li class="subcategoria-item">
+                  <a
+                    href={sub.url}
+                    class="enlace-subcategoria block px-4 py-2 text-sm text-black hover:bg-institucional-azul-700 transition duration-150"
+                  >
+                    {sub.nombre}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</nav>
