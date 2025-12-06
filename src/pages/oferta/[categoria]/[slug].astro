@@ -1,14 +1,14 @@
 ---
 import Layout from "../../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import Banner from "../../../components/Banner.astro";
 
 export async function getStaticPaths() {
   const propuestas = await getCollection("propuestas");
 
-  console.log("🟦 PROPOS ENCONTRADAS:", propuestas.length);
+  
 
   const paths = propuestas.map((p) => {
-    console.log("🔥 MD:", p.slug, "nivel:", p.data.nivel);
 
     return {
       params: {
@@ -22,8 +22,7 @@ export async function getStaticPaths() {
     };
   });
 
-  console.log("🟩 RUTAS GENERADAS:");
-  console.log(paths);
+
 
   return paths;
 }
@@ -34,6 +33,12 @@ const { propuesta, categoria } = Astro.props;
 ---
 
 <Layout>
+  <Banner
+    title={propuesta.data.titulo}
+    description={propuesta.data.universidad}
+    showButton={false}
+    heightClass="py-20"
+  />
   <section class="max-w-4xl mx-auto py-12">
     <a href={`/oferta/${categoria}`} class="text-blue-600 text-sm">
       ← Volver a {categoria}

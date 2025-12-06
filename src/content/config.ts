@@ -18,6 +18,7 @@ const propuestasCollection = defineCollection({
     categoria: z.string(),
     nivel: z.enum(["grado", "pregrado", "diplomaturas"]),
     universidad: z.string(),
+    img: z.string(),
     duracion: z.string(),
     modalidad: z.string(),
     financiamiento: z.string(),

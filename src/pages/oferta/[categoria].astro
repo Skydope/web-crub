@@ -49,6 +49,10 @@ const tituloBanner = titulos[categoria] ?? "Propuestas académicas";
       {propuestasFiltradas.map((p) => (
         <a href={`/oferta/${categoria}/${p.slug.split("/").pop()}`}>
         <article class="p-4 bg-white rounded-lg shadow-md">
+          <img 
+            src={`/img/logos-universidades/${p.data.img}.jpg`} alt={p.data.universidad} 
+            class="w-[293px] h-[149px] object-cover rounded"
+            />
           <h2 class="text-xl font-semibold">{p.data.titulo}</h2>
           <p class="text-sm text-gray-600">{p.data.universidad}</p>
           <p class="text-sm">{p.data.duracion}</p>
