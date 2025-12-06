@@ -1,5 +1,6 @@
 ---
 import menuItems, { type SeccionMenu } from '../data/menu'
+import MobileSubmenu from './MobileSubmenu.astro'
 
 const tieneSubcategorias = (seccion: SeccionMenu) =>
   seccion.subcategorias && seccion.subcategorias.length > 0
@@ -9,65 +10,84 @@ const BG_HOVER = 'hover:bg-blue-900'
 const SUBCAT_BG = 'bg-institucional-azul-DEFAULT'
 ---
 
-<nav class="hidden md:block px-4">
-  <ul class="flex space-x-2 lg:space-x-4">
-    {
-      menuItems.map((seccion) => (
-        <li
-          class:list={[
-            'relative group transition duration-300',
-            { 'con-subcategorias': tieneSubcategorias(seccion) },
-          ]}
-        >
-          {tieneSubcategorias(seccion) ? (
-            <span
-              class={`${BASE_COLOR} ${BG_HOVER} cursor-default font-cuerpo px-3 py-2 rounded-md text-sm font-medium flex items-center`}
+<nav id="main-navigation">
+  <!-- Desktop Menu -->
+  <ul class="hidden md:flex space-x-2 lg:space-x-4 px-4">
+    {menuItems.map((seccion) => (
+      <li
+        class:list={[
+          'relative group transition duration-300',
+          { 'con-subcategorias': tieneSubcategorias(seccion) },
+        ]}
+      >
+        {tieneSubcategorias(seccion) ? (
+          <span
+            class={`${BASE_COLOR} ${BG_HOVER} cursor-default font-cuerpo px-3 py-2 rounded-md text-sm font-medium flex items-center`}
+          >
+            {seccion.nombre}
+            <svg
+              class="w-4 h-4 ml-1 transform group-hover:rotate-180 transition duration-300"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              {seccion.nombre}
-              <svg
-                class="w-4 h-4 ml-1 transform group-hover:rotate-180 transition duration-300"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </span>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </span>
+        ) : (
+          <a
+            href={seccion.url || '#'}
+            class={`${BASE_COLOR} ${BG_HOVER} font-cuerpo px-3 py-2 rounded-md text-sm font-medium block`}
+          >
+            {seccion.nombre}
+          </a>
+        )}
+
+        {tieneSubcategorias(seccion) && (
+          <ul
+            class:list={[
+              `absolute left-0 mt-0 pt-2 ${SUBCAT_BG} rounded-b-lg shadow-xl min-w-[200px]`,
+              'opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300',
+            ]}
+          >
+            {(seccion.subcategorias || []).map((sub) => (
+              <li class="subcategoria-item">
+                <a
+                  href={sub.url}
+                  class="enlace-subcategoria block px-4 py-2 text-sm bg-white text-black hover:bg-blue-800 hover:text-institucional-azul-100 hover:border-2 hover:border-black transition duration-150"
+                >
+                  {sub.nombre}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </li>
+    ))}
+  </ul>
+
+  <!-- Mobile Menu -->
+  <div class="md:hidden w-full">
+    <ul class="w-full">
+      {menuItems.map((seccion) => (
+        <li class="border-b border-gray-200 last:border-b-0 w-full">
+          {tieneSubcategorias(seccion) ? (
+            <MobileSubmenu seccion={seccion} />
           ) : (
             <a
               href={seccion.url || '#'}
-              class={`${BASE_COLOR} ${BG_HOVER} font-cuerpo px-3 py-2 rounded-md text-sm font-medium block`}
+              class="block px-4 py-3 text-base font-medium text-black hover:bg-blue-50 transition duration-150 font-cuerpo w-full"
             >
               {seccion.nombre}
             </a>
           )}
-
-          {tieneSubcategorias(seccion) && (
-            <ul
-              class:list={[
-                `absolute left-0 mt-0 pt-2 ${SUBCAT_BG} rounded-b-lg shadow-xl min-w-[200px]`,
-                'opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300',
-              ]}
-            >
-              {(seccion.subcategorias || []).map((sub) => (
-                <li class="subcategoria-item">
-                  <a
-                    href={sub.url}
-                    class="enlace-subcategoria block px-4 py-2 text-sm  bg-white text-black hover:bg-blue-800 hover:text-institucional-azul-100 hover:border-2 hover:border-black transition duration-150"
-                  >
-                    {sub.nombre}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
         </li>
-      ))
-    }
-  </ul>
+      ))}
+    </ul>
+  </div>
 </nav>

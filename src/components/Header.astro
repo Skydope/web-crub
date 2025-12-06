@@ -3,14 +3,12 @@ import Navegacion from './Navegacion.astro'
 import SearchToggle from './SearchToggle.astro'
 ---
 
-<header
-    class="bg-white text-blue-900 shadow-lg sticky top-0 z-50"
->
+<header class="bg-white text-blue-900 shadow-lg sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-20">
             <a href="/" class="flex-shrink-0">
-                <span class="font-encabezado text-xl font-bold tracking-wider">
-                    Centro Regional Universitario Bolivar
+                <span class="font-encabezado text-4xl font-bold tracking-wider">
+                    CRUB
                 </span>
             </a>
 
@@ -26,6 +24,139 @@ import SearchToggle from './SearchToggle.astro'
 
                 <SearchToggle />
             </div>
+
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+                <button
+                    id="mobile-menu-button"
+                    type="button"
+                    class="inline-flex items-center justify-center p-2 rounded-md text-blue-900 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-institucional-oro"
+                    aria-expanded="false"
+                    aria-label="Abrir menú"
+                >
+                    <svg
+                        class="block h-6 w-6"
+                        id="menu-icon-open"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                        ></path>
+                    </svg>
+                    <svg
+                        class="hidden h-6 w-6"
+                        id="menu-icon-close"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile menu - Full width -->
+    <div class="md:hidden hidden" id="mobile-menu">
+        <div class="bg-white shadow-lg">
+            <!-- Buscador móvil -->
+            <div class="px-4 pt-4 pb-3 border-b border-gray-200">
+                <form action="/buscar" method="GET" class="flex items-center">
+                    <input
+                        type="search"
+                        name="q"
+                        placeholder="Buscar..."
+                        aria-label="Campo de búsqueda"
+                        class="flex-1 px-3 py-2 rounded-l-md text-sm text-institucional-azul-900 bg-gray-50 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-institucional-azul-600 focus:border-transparent"
+                    />
+                    <button
+                        type="submit"
+                        aria-label="Buscar"
+                        class="bg-institucional-oro text-institucional-azul-900 px-4 py-2 rounded-r-md hover:opacity-80 transition duration-150"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                            ></path>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+            
+            <Navegacion />
+            
+            <div class="px-4 pb-4 pt-3">
+                <a
+                    href="/inscripciones"
+                    class="bg-institucional-oro text-blue-900 block px-4 py-3 rounded-md text-base font-bold hover:opacity-80 transition duration-150 text-center w-full"
+                >
+                    Inscribite
+                </a>
+            </div>
         </div>
     </div>
 </header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const mobileMenuButton = document.getElementById('mobile-menu-button')
+        const mobileMenu = document.getElementById('mobile-menu')
+        const menuIconOpen = document.getElementById('menu-icon-open')
+        const menuIconClose = document.getElementById('menu-icon-close')
+
+        if (mobileMenuButton && mobileMenu && menuIconOpen && menuIconClose) {
+            mobileMenuButton.addEventListener('click', () => {
+                const isOpen = !mobileMenu.classList.contains('hidden')
+
+                if (isOpen) {
+                    mobileMenu.classList.add('hidden')
+                    menuIconOpen.classList.remove('hidden')
+                    menuIconClose.classList.add('hidden')
+                    mobileMenuButton.setAttribute('aria-expanded', 'false')
+                    mobileMenuButton.setAttribute('aria-label', 'Abrir menú')
+                } else {
+                    mobileMenu.classList.remove('hidden')
+                    menuIconOpen.classList.add('hidden')
+                    menuIconClose.classList.remove('hidden')
+                    mobileMenuButton.setAttribute('aria-expanded', 'true')
+                    mobileMenuButton.setAttribute('aria-label', 'Cerrar menú')
+                }
+            })
+
+            // Cerrar menú al hacer click fuera
+            document.addEventListener('click', (event) => {
+                const target = event.target as Node
+                if (
+                    !mobileMenu.contains(target) &&
+                    !mobileMenuButton.contains(target) &&
+                    !mobileMenu.classList.contains('hidden')
+                ) {
+                    mobileMenu.classList.add('hidden')
+                    menuIconOpen.classList.remove('hidden')
+                    menuIconClose.classList.add('hidden')
+                    mobileMenuButton.setAttribute('aria-expanded', 'false')
+                    mobileMenuButton.setAttribute('aria-label', 'Abrir menú')
+                }
+            })
+        }
+    })
+</script>
