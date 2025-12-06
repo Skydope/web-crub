@@ -1,4 +1,5 @@
 ---
+import Banner from '../../components/Banner.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 ---
 
@@ -6,16 +7,21 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
     title="Historia"
     description="Página donde se muestra la historia de la Institución a través de los años."
 >
+<Banner
+  title="Nuestra Historia"
+  description="Formando profesionales desde 1997"
+  showButton={false}
+/>
     <div class="sm:p-6 lg:p-8 bg-white shadow-xl rounded-lg">
         <h1
             class="font-encabezado text-4xl sm:text-5xl font-bold p-4 bg-institucional-azul-700 text-white mb-8 rounded-t-lg"
         >
-            Nuestra Historia
+          El CRUB a través de los años.
         </h1>
 
         <section class="origen mb-12 p-6 bg-gray-50 rounded-lg">
             <h2
-                class="font-encabezado text-2xl sm:text-3xl font-semibold mb-3 text-gray-800"
+                class="font-encabezado text-2xl sm:text-2xl font-semibold mb-3 text-gray-800"
             >
                 Los comienzos de la institución
             </h2>
@@ -35,9 +41,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
             </p>
         </section>
 
-        <section class="linea-tiempo mb-12">
+        <section class="linea-tiempo mb-12 p-6 bg-gray-50 rounded-lg">
             <h2
-                class="font-encabezado text-2xl sm:text-3xl font-semibold mb-6 text-gray-800"
+                class="font-encabezado text-2xl sm:text-2xl font-semibold mb-6 text-gray-800"
             >
                 Hitos Históricos
             </h2>
@@ -49,11 +55,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
                     <div
                         class="absolute -left-10 top-0 w-8 h-8 rounded-full bg-institucional-azul-700 border-4 border-white shadow-md flex items-center justify-center text-white font-bold text-xs"
                     >
-                        '91
+                        '97
                     </div>
                     <strong
                         class="font-encabezado text-xl font-bold text-institucional-azul-600 block mb-1"
-                        >1991: Origen.</strong
+                        >Inauguración.</strong
                     >
                     <span class="font-cuerpo text-gray-700"
                         >Se inauguró el Centro Regional Universitario de Bolívar
@@ -70,7 +76,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
                     </div>
                     <strong
                         class="font-encabezado text-xl font-bold text-institucional-azul-600 block mb-1"
-                        >2017: Inauguración.</strong
+                        >Comienzo.</strong
                     >
                     <span class="font-cuerpo text-gray-700"
                         >Durante la intendencia del Dr. Eduardo Bali Bucca,
@@ -87,7 +93,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
                     </div>
                     <strong
                         class="font-encabezado text-xl font-bold text-institucional-azul-600 block mb-1"
-                        >2022: Programa Puentes.</strong
+                        >Programa Puentes.</strong
                     >
                     <span class="font-cuerpo text-gray-700"
                         >A partir de Puentes, se incrementan las oportunidades

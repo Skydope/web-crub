@@ -1,0 +1,49 @@
+---
+const { title, url } = Astro.props;
+
+// Valores por defecto (por si no pasas props)
+const shareUrl = url ?? Astro.url.href;
+const shareTitle = title ?? "Mirá este artículo";
+---
+
+<div class="flex items-center justify-between py-8 border-t border-slate-200">
+  <p class="text-sm text-slate-600 font-medium">Compartir artículo</p>
+
+  <div class="flex gap-3">
+
+    <!-- Facebook -->
+    <a
+      href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="w-10 h-10 rounded-full bg-slate-100 hover:bg-blue-600 hover:text-white transition-colors flex items-center justify-center text-slate-600"
+      aria-label="Compartir en Facebook"
+    >
+      <!-- icono -->
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073..."/></svg>
+    </a>
+
+    <!-- Twitter (X) -->
+    <a
+      href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareTitle)}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="w-10 h-10 rounded-full bg-slate-100 hover:bg-blue-600 hover:text-white transition-colors flex items-center justify-center text-slate-600"
+      aria-label="Compartir en Twitter"
+    >
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953..."/></svg>
+    </a>
+
+    <!-- LinkedIn -->
+    <a
+      href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="w-10 h-10 rounded-full bg-slate-100 hover:bg-blue-600 hover:text-white transition-colors flex items-center justify-center text-slate-600"
+      aria-label="Compartir en LinkedIn"
+    >
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447..."/></svg>
+    </a>
+
+  </div>
+</div>

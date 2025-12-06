@@ -11,28 +11,27 @@ export interface SeccionMenu {
 
 const menuItems: SeccionMenu[] = [
     {
-        nombre: "Institución",
-        url: "/institucion",
+        nombre: "Institucional",
+        url: "/institucional",
         subcategorias: [
-            { nombre: "Historia", url: "/institucion/historia" },
+            { nombre: "Historia", url: "/institucional/historia" },
         ],
     },
     {
-        nombre: "Oferta Académica",
+        nombre: "Propuesta Académica",
         url: "/oferta",
         subcategorias: [
+            { nombre: "Grado", url: "/oferta/grado" },
+            { nombre: "Pregrado", url: "/oferta/pregrado" },
             { nombre: "Diplomaturas", url: "/oferta/diplomaturas" },
-            { nombre: "Tecnicaturas", url: "/oferta/tecnicaturas" },
-            { nombre: "Licenciaturas", url: "/oferta/licenciaturas" },
-            { nombre: "Ingenierías", url: "/oferta/ingenierias" },
         ],
     },
     {
-        nombre: "Residencias",
+        nombre: "Casas Estudiantiles",
         url: "/residencias",
         subcategorias: [
-            { nombre: "Residencias en Azul", url: "/residencias/residencia-azul" },
-            { nombre: "Residencias en La Plata", url: "/residencias/residencia-la-plata" },
+            { nombre: "Casas en Azul", url: "/residencias/residencia-azul" },
+            { nombre: "Casas en La Plata", url: "/residencias/residencia-la-plata" },
         ],
     },
     {

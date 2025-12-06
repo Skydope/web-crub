@@ -6,11 +6,27 @@ const noticiasCollection = defineCollection({
     titulo: z.string(),
     descripcion: z.string(),
     categoria: z.string(),
-    fecha: z.date(),
+    fecha: z.string(),
     imagen: z.string().url(),
+  }),
+});
+
+const propuestasCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    titulo: z.string(),
+    categoria: z.string(),
+    nivel: z.enum(["grado", "pregrado", "diplomaturas"]),
+    universidad: z.string(),
+    duracion: z.string(),
+    modalidad: z.string(),
+    financiamiento: z.string(),
   }),
 });
 
 export const collections = {
   noticias: noticiasCollection,
+  propuestas: propuestasCollection,
 };
+
+

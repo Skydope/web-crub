@@ -1,10 +1,31 @@
 ---
 import { getCollection } from "astro:content";
 
+// Obtener noticias
 const noticias = await getCollection("noticias");
-const noticiasOrdenadas = noticias.sort(
-  (a, b) => b.data.fecha.getTime() - a.data.fecha.getTime()
-);
+
+// Ordenar por fecha (dd-mm-yyyy → Date → ordenar)
+const noticiasOrdenadas = noticias.sort((a, b) => {
+  const [diaA, mesA, anioA] = a.data.fecha.split("-").map(Number);
+  const [diaB, mesB, anioB] = b.data.fecha.split("-").map(Number);
+
+  const fechaA = new Date(anioA, mesA - 1, diaA);
+  const fechaB = new Date(anioB, mesB - 1, diaB);
+
+  return fechaB - fechaA; // más reciente primero
+});
+
+// Función para formatear fecha localmente
+function formatearFecha(fechaStr) {
+  const [dia, mes, anio] = fechaStr.split("-").map(Number);
+  const fecha = new Date(anio, mes - 1, dia);
+
+  return fecha.toLocaleDateString("es-AR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
 ---
 
 <section id="noticias" class="py-16 bg-white scroll-mt-16">
@@ -16,16 +37,20 @@ const noticiasOrdenadas = noticias.sort(
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
       {noticiasOrdenadas.map((noticia) => (
+        
         <article
           class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
         >
           <div class="relative">
+            <a
+                href={`/noticias/${noticia.slug}/`}>
             <img
               src={noticia.data.imagen}
               alt={noticia.data.titulo}
               class="w-full h-48 object-cover"
               loading="lazy"
             />
+            </a>
             <div class="absolute top-4 left-4">
               <span
                 class="bg-blue-600 text-white px-2 py-1 rounded text-sm font-medium"
@@ -34,6 +59,7 @@ const noticiasOrdenadas = noticias.sort(
               </span>
             </div>
           </div>
+
           <div class="p-6">
             <h3 class="text-xl font-semibold text-gray-900 mb-2 line-clamp-2">
               {noticia.data.titulo}
@@ -41,14 +67,12 @@ const noticiasOrdenadas = noticias.sort(
             <p class="text-gray-600 mb-4 line-clamp-3">
               {noticia.data.descripcion}
             </p>
+
             <div class="flex justify-between items-center">
               <time class="text-sm text-gray-500">
-                {new Date(noticia.data.fecha).toLocaleDateString("es-AR", {
-                  day: "numeric",
-                  month: "long",
-                  year: "numeric",
-                })}
+                {formatearFecha(noticia.data.fecha)}
               </time>
+
               <a
                 href={`/noticias/${noticia.slug}/`}
                 class="text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1 transition-colors"
@@ -76,11 +100,13 @@ const noticiasOrdenadas = noticias.sort(
     </div>
 
     <div class="text-center">
+      <a href="/noticias">
       <button
         class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
       >
         Cargar más noticias
       </button>
+      </a>
     </div>
   </div>
 </section>

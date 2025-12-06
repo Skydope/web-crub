@@ -1,32 +1,66 @@
 ---
+const {
+  title = "Título por defecto",
+  description = "Descripción por defecto",
+  showButton = false,
+  buttonText = "Conocer más",
+  buttonLink = "#",
 
+  // Nuevos props
+  backgroundImage = null, // ej: "/images/banner.jpg"
+  gradient = "from-blue-900 to-blue-700",
+  overlayOpacity = 0.2,
+  patternOpacity = 0.3,
+  fullHeight = false,
+  heightClass = "py-24 lg:py-32" // altura por defecto
+} = Astro.props;
+
+// Altura dinámica
+const sectionClass = fullHeight
+  ? "min-h-screen flex items-center"
+  : "";
 ---
 
 <section
-  class="relative bg-gradient-to-r from-blue-900 to-blue-700 text-white overflow-hidden"
+  class={`relative bg-gradient-to-r ${gradient} text-white overflow-hidden ${sectionClass}`}
+  style={backgroundImage ? `background-image: url('${backgroundImage}'); background-size: cover; background-position: center;` : ""}
 >
-  <div class="absolute inset-0 bg-black opacity-20"></div><div
-    class="absolute inset-0 opacity-30"
-  >
+  <!-- Overlay oscuro -->
+  <div class={`absolute inset-0 bg-black`} style={`opacity: ${overlayOpacity}`}></div>
+
+  <!-- Patrón SVG -->
+  <div class="absolute inset-0" style={`opacity: ${patternOpacity}`}>
     <div
       class="absolute inset-0"
-      style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='7' cy='7' r='7'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;);"
-    >
-    </div>
-  </div><div
-    class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32"
-  >
+      style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.05\'%3E%3Ccircle cx=\'7\' cy=\'7\' r=\'7\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"
+    ></div>
+  </div>
+
+  <!-- Contenido -->
+ <div class={`relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${heightClass}`}>
     <div class="text-center">
+
       <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
-        Centro Regional Universitario Bolívar
-      </h1><p
-        class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90 animate-fade-in-delayed"
-      >
-        Excelencia académica en el corazón de Buenos Aires. Formando
-        profesionales comprometidos con el desarrollo regional.
-      </p><button
-        class="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg"
-        >Conocer más</button>
+        {title}
+      </h1>
+
+      <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90 animate-fade-in-delayed">
+        {description}
+      </p>
+
+      {showButton && (
+        <a href={buttonLink}>
+          <button 
+            class="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg"
+          >
+            {buttonText}
+          </button>
+        </a>
+      )}
+
+      <!-- SLOT EXTRA por si querés colocar más contenido -->
+      <slot />
+
     </div>
   </div>
 </section>

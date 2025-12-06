@@ -1,0 +1,48 @@
+---
+import Layout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+// 1) Generamos las rutas estáticas
+export async function getStaticPaths() {
+  // Carpetas válidas dentro de content/propuestas
+  const categorias = ["grado", "pregrado", "diplomaturas"];
+
+  return categorias.map((categoria) => ({
+    params: { categoria },
+  }));
+}
+
+// 2) Obtenemos el parámetro de la URL
+const { categoria } = Astro.params;
+
+// 3) Obtenemos todas las propuestas
+const propuestas = await getCollection("propuestas");
+
+// 4) Filtramos por subcarpeta (primer parte del id)
+const propuestasFiltradas = propuestas.filter((p) => {
+  const carpeta = p.id.split("/")[0];
+  return carpeta === categoria;
+});
+---
+
+<Layout>
+  <section class="max-w-5xl mx-auto py-12">
+    <h1 class="text-3xl font-bold mb-8 capitalize">
+      {categoria}
+    </h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {propuestasFiltradas.map((p) => (
+        <a href={`/oferta/${categoria}/${p.slug.split("/").pop()}`}>
+        <article class="p-4 bg-white rounded-lg shadow-md">
+          <h2 class="text-xl font-semibold">{p.data.titulo}</h2>
+          <p class="text-sm text-gray-600">{p.data.universidad}</p>
+          <p class="text-sm">{p.data.duracion}</p>
+          <p class="text-sm">{p.data.modalidad}</p>
+          <p class="text-sm">{p.data.financiamiento}</p>
+        </article>
+        </a>
+      ))}
+    </div>
+  </section>
+</Layout>

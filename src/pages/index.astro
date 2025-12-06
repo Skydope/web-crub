@@ -5,7 +5,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="Inicio" description="Página principal en la que se muestra la información más relevante.">
     
-<Banner />
+<Banner
+  title="Centro Regional Universitario Bolívar"
+  description="Excelencia académica en el corazón de Buenos Aires."
+  showButton={true}
+  buttonText="Conocer más"
+  buttonLink="/institucional/historia"
+/>
+
     
 <Noticias />
 

@@ -1,0 +1,55 @@
+---
+import Layout from "../../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const propuestas = await getCollection("propuestas");
+
+  console.log("🟦 PROPOS ENCONTRADAS:", propuestas.length);
+
+  const paths = propuestas.map((p) => {
+    console.log("🔥 MD:", p.slug, "nivel:", p.data.nivel);
+
+    return {
+      params: {
+        categoria: p.data.nivel,
+        slug: p.slug.split("/").pop(),
+      },
+      props: {
+        propuesta: p,
+        categoria: p.data.nivel,
+      },
+    };
+  });
+
+  console.log("🟩 RUTAS GENERADAS:");
+  console.log(paths);
+
+  return paths;
+}
+
+
+
+const { propuesta, categoria } = Astro.props;
+---
+
+<Layout>
+  <section class="max-w-4xl mx-auto py-12">
+    <a href={`/oferta/${categoria}`} class="text-blue-600 text-sm">
+      ← Volver a {categoria}
+    </a>
+
+    <h1 class="text-4xl font-bold mb-4">{propuesta.data.titulo}</h1>
+
+    <ul class="space-y-1 text-gray-700">
+      <li><strong>Universidad:</strong> {propuesta.data.universidad}</li>
+      <li><strong>Duración:</strong> {propuesta.data.duracion}</li>
+      <li><strong>Modalidad:</strong> {propuesta.data.modalidad}</li>
+      <li><strong>Financiamiento:</strong> {propuesta.data.financiamiento}</li>
+    </ul>
+
+    <article class="prose mt-8">
+      {propuesta.body}
+    </article>
+  </section>
+</Layout>
