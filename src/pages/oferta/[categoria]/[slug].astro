@@ -6,10 +6,7 @@ import Banner from "../../../components/Banner.astro";
 export async function getStaticPaths() {
   const propuestas = await getCollection("propuestas");
 
-  
-
   const paths = propuestas.map((p) => {
-
     return {
       params: {
         categoria: p.data.nivel,
@@ -22,39 +19,62 @@ export async function getStaticPaths() {
     };
   });
 
-
-
   return paths;
 }
 
-
-
 const { propuesta, categoria } = Astro.props;
 ---
-
 <Layout>
+
   <Banner
     title={propuesta.data.titulo}
     description={propuesta.data.universidad}
     showButton={false}
     heightClass="py-20"
   />
-  <section class="max-w-4xl mx-auto py-12">
-    <a href={`/oferta/${categoria}`} class="text-blue-600 text-sm">
+
+  <section class="max-w-4xl mx-auto py-12 px-4">
+
+    <!-- Botón volver -->
+    <a 
+      href={`/oferta/${categoria}`} 
+      class="inline-block mb-6 text-blue-600 hover:underline text-sm"
+    >
       ← Volver a {categoria}
     </a>
 
-    <h1 class="text-4xl font-bold mb-4">{propuesta.data.titulo}</h1>
+    <!-- CARD PRINCIPAL -->
+    <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+      
+      <!-- Imagen -->
+      <img 
+        src={`/img/logos-universidades/${propuesta.data.img}.jpg`} 
+        alt={propuesta.data.titulo}
+        class="w-full h-64 object-cover"
+      />
 
-    <ul class="space-y-1 text-gray-700">
-      <li><strong>Universidad:</strong> {propuesta.data.universidad}</li>
-      <li><strong>Duración:</strong> {propuesta.data.duracion}</li>
-      <li><strong>Modalidad:</strong> {propuesta.data.modalidad}</li>
-      <li><strong>Financiamiento:</strong> {propuesta.data.financiamiento}</li>
-    </ul>
+      <!-- Contenido -->
+      <div class="p-8">
 
-    <article class="prose mt-8">
-      {propuesta.body}
-    </article>
+        <h1 class="text-3xl font-bold mb-4 text-gray-900">
+          {propuesta.data.titulo}
+        </h1>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          <p><strong>Universidad:</strong> {propuesta.data.universidad}</p>
+          <p><strong>Duración:</strong> {propuesta.data.duracion}</p>
+          <p><strong>Modalidad:</strong> {propuesta.data.modalidad}</p>
+          <p><strong>Financiamiento:</strong> {propuesta.data.financiamiento}</p>
+        </div>
+
+        <!-- Contenido del body -->
+        <article class="prose max-w-none">
+          {propuesta.body}
+        </article>
+
+      </div>
+
+    </div>
+
   </section>
 </Layout>
