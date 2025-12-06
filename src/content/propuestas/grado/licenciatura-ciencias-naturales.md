@@ -7,5 +7,6 @@ img: "arturo-jau"
 duracion: "2 años y 6 meses (ciclo complementación docente)"
 modalidad: "Virtual"
 financiamiento: "Programa PUENTES"
+url: "licenciatura-ciencias-naturales"
 ---
 

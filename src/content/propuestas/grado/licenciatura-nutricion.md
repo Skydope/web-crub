@@ -7,4 +7,5 @@ img: "untref"
 duracion: "5 años"
 modalidad: "Híbrida"
 financiamiento: "Municipalidad de Bolívar"
+url: "licenciatura-nutricion"
 ---

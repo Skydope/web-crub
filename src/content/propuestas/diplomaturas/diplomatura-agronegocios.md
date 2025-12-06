@@ -7,5 +7,6 @@ img: "unicen"
 duracion: "1 año"
 modalidad: "Presencial (cada 15 días)"
 financiamiento: "Programa PUENTES"
+url: "diplomatura-agronegocios"
 ---
 

@@ -7,4 +7,5 @@ img: "floreal-ferrara"
 duracion: "3 años"
 modalidad: "Presencial"
 financiamiento: "Municipalidad de Bolívar"
+url: "tecnicatura-enfermeria"
 ---

@@ -7,5 +7,6 @@ img: "ungs"
 duracion: "9 meses"
 modalidad: "Virtual"
 financiamiento: "Programa PUENTES"
+url: "diplomatura-ciberseguridad"
 ---
 

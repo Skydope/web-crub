@@ -1,0 +1,164 @@
+---
+const { items } = Astro.props;
+---
+
+<div class="carousel-wrapper relative group">
+  <!-- Botones de navegación -->
+  <button class="carousel-prev absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 opacity-0 group-hover:opacity-100 transition-opacity">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+
+  <button class="carousel-next absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-full p-3 opacity-0 group-hover:opacity-100 transition-opacity">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+
+  <div class="overflow-hidden">
+    <div class="carousel-track flex">
+      {items.concat(items).map((item, i) => (
+        <div class="min-w-[300px] sm:min-w-[350px] lg:min-w-[400px] p-4 flex-shrink-0" key={i}>
+          <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+            <a href={`/oferta/${item.nivel}/${item.url}`}  rel="noopener noreferrer">
+
+            <img
+              src={`/img/logos-universidades/${item.img}.jpg`}
+              alt={item.titulo}
+              class="w-[293px] h-[149px] rounded"
+            />
+            <div class="p-4">
+              <h3 class="text-lg font-bold mb-2">{item.titulo}</h3>
+              <p class="text-sm text-gray-900">{item.universidad}</p>
+              <p class="text-sm font-bold">{item.duracion}</p>
+              <p class="text-sm font-bold text-blue-900">{item.modalidad}</p>
+            </div>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .carousel-track {
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+  }
+</style>
+
+<script>
+  function initCarousel() {
+    const wrapper = document.querySelector('.carousel-wrapper');
+    if (!wrapper) return;
+
+    const track = wrapper.querySelector('.carousel-track');
+    const prevBtn = wrapper.querySelector('.carousel-prev');
+    const nextBtn = wrapper.querySelector('.carousel-next');
+    const items = track.querySelectorAll('.min-w-\\[300px\\]');
+    
+    if (!track || items.length === 0) return;
+
+    let currentPosition = 0;
+    let animationId = null;
+    let isHovered = false;
+    const speed = 2; // píxeles por frame (ajustar para más o menos velocidad)
+    const totalWidth = track.scrollWidth / 2; // mitad porque duplicamos
+
+    function animate() {
+      if (!isHovered) {
+        currentPosition -= speed;
+        
+        // Reset cuando llegamos a la mitad
+        if (Math.abs(currentPosition) >= totalWidth) {
+          currentPosition = 0;
+        }
+        
+        track.style.transform = `translateX(${currentPosition}px)`;
+      }
+      
+      animationId = requestAnimationFrame(animate);
+    }
+
+    function snapToNearest() {
+      const itemWidth = items[0].offsetWidth + 16; // ancho + gap
+      const nearestIndex = Math.round(Math.abs(currentPosition) / itemWidth);
+      currentPosition = -nearestIndex * itemWidth;
+      
+      track.style.transition = 'transform 0.3s ease';
+      track.style.transform = `translateX(${currentPosition}px)`;
+      
+      setTimeout(() => {
+        track.style.transition = '';
+      }, 300);
+    }
+
+    function moveManual(direction) {
+      const itemWidth = items[0].offsetWidth + 16;
+      
+      if (direction === 'next') {
+        currentPosition -= itemWidth;
+      } else {
+        currentPosition += itemWidth;
+      }
+      
+      // Reset si nos salimos de rango
+      if (Math.abs(currentPosition) >= totalWidth) {
+        currentPosition = 0;
+      } else if (currentPosition > 0) {
+        currentPosition = -totalWidth + itemWidth;
+      }
+      
+      track.style.transition = 'transform 0.5s ease';
+      track.style.transform = `translateX(${currentPosition}px)`;
+      
+      setTimeout(() => {
+        track.style.transition = '';
+      }, 500);
+    }
+
+    // Eventos de hover
+    wrapper.addEventListener('mouseenter', () => {
+      isHovered = true;
+      snapToNearest();
+    });
+
+    wrapper.addEventListener('mouseleave', () => {
+      isHovered = false;
+    });
+
+    // Eventos de botones
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      moveManual('prev');
+    });
+
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      moveManual('next');
+    });
+
+    // Iniciar animación
+    animate();
+
+    // Cleanup si la página se desmonta
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
+  }
+
+  // Inicializar cuando el DOM esté listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCarousel);
+  } else {
+    initCarousel();
+  }
+
+  // Para Astro view transitions
+  document.addEventListener('astro:page-load', initCarousel);
+</script>

@@ -7,4 +7,5 @@ img: "quilmes"
 duracion: "3 años"
 modalidad: "Híbrida"
 financiamiento: "Municipalidad de Bolívar"
+url: "tecnicatura-quimica"
 ---

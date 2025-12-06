@@ -22,6 +22,7 @@ const propuestasCollection = defineCollection({
     duracion: z.string(),
     modalidad: z.string(),
     financiamiento: z.string(),
+    url: z.string(),
   }),
 });
 

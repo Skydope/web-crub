@@ -7,5 +7,6 @@ img: "untref"
 duracion: "6 meses"
 modalidad: "Virtual"
 financiamiento: "Municipalidad de Bolívar"
+url: "diplomatura-habilidades-digitales"
 ---
 

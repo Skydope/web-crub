@@ -7,4 +7,5 @@ img: "ungs"
 duracion: "3 años"
 modalidad: "Híbrida"
 financiamiento: "Programa PUENTES"
+url: "tecnicatura-auto-y-control"
 ---

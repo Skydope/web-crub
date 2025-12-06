@@ -7,6 +7,7 @@ img: "mardel"
 duracion: "5 años"
 modalidad: "Híbrida"
 financiamiento: "Municipalidad de Bolívar"
+url: "licenciatura psicologia"
 ---
 
 
