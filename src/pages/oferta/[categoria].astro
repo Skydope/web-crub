@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import Banner from "../../components/Banner.astro";
 
 // 1) Generamos las rutas estáticas
 export async function getStaticPaths() {
@@ -23,13 +24,26 @@ const propuestasFiltradas = propuestas.filter((p) => {
   const carpeta = p.id.split("/")[0];
   return carpeta === categoria;
 });
+
+const titulos = {
+  grado: "Carreras de Grado",
+  pregrado: "Carreras de Pregrado",
+  diplomaturas: "Diplomaturas y Cursos"
+};
+
+const tituloBanner = titulos[categoria] ?? "Propuestas académicas";
 ---
 
+
 <Layout>
-  <section class="max-w-5xl mx-auto py-12">
-    <h1 class="text-3xl font-bold mb-8 capitalize">
-      {categoria}
-    </h1>
+<Banner
+  title={tituloBanner}
+  description=""
+  showButton={false}
+/>
+
+<section class="max-w-5xl mx-auto py-20 min-h-[70vh]">
+
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {propuestasFiltradas.map((p) => (
