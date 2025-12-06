@@ -5,7 +5,7 @@ const tieneSubcategorias = (seccion: SeccionMenu) =>
   seccion.subcategorias && seccion.subcategorias.length > 0
 
 const BASE_COLOR = 'text-black hover:text-institucional-azul-100'
-const BG_HOVER = 'hover:bg-institucional-azul-700'
+const BG_HOVER = 'hover:bg-blue-900'
 const SUBCAT_BG = 'bg-institucional-azul-DEFAULT'
 ---
 
@@ -58,7 +58,7 @@ const SUBCAT_BG = 'bg-institucional-azul-DEFAULT'
                 <li class="subcategoria-item">
                   <a
                     href={sub.url}
-                    class="enlace-subcategoria block px-4 py-2 text-sm  bg-white text-black hover:bg-institucional-azul-700 transition duration-150"
+                    class="enlace-subcategoria block px-4 py-2 text-sm  bg-white text-black hover:bg-blue-800 hover:text-institucional-azul-100 hover:border-2 hover:border-black transition duration-150"
                   >
                     {sub.nombre}
                   </a>
