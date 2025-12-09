@@ -108,6 +108,26 @@ const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
             <p class="text-gray-900 font-semibold pl-7">{propuesta.data.financiamiento}</p>
           </div>
 
+          <!--Botón inscripción -->
+          <div class="space-y-2 pt-4 border-t">
+            <div class="flex items-center gap-2 text-gray-600 text-sm font-medium">
+            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Inscripción
+              
+            </div>
+            <a 
+      href="/inscripciones" 
+      class="inline-flex items-center gap-2 mb-8 bg-blue-900 text-white px-2 mt-1 py-1 rounded-lg font-semibold hover:bg-blue-600  transition-all duration-300 transform hover:scale-105 shadow-lg"
+    >
+      <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+</svg>
+      Inscribirme
+    </a>
+          </div>
+
           <!-- Nivel/Categoría -->
           <div class="space-y-2 pt-4 border-t">
             <div class="flex items-center gap-2 text-gray-600 text-sm font-medium">
@@ -131,7 +151,15 @@ const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
           <h1 class="text-3xl font-bold mb-6 text-gray-900 border-b pb-4">
             {propuesta.data.titulo}
           </h1>
-
+          <a 
+      href="/inscripciones" 
+      class="inline-flex items-center gap-2 mb-8 bg-blue-900 text-white px-2 mt-1 py-1 rounded-lg font-semibold hover:bg-blue-600  transition-all duration-300 transform hover:scale-105 shadow-lg"
+    >
+      <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+</svg>
+      Inscribirme
+    </a>
           <!-- Contenido del body -->
           <article class="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-blue-600 prose-strong:text-gray-900">
             {propuesta.body}
