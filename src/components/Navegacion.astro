@@ -23,7 +23,7 @@ const SUBCAT_BG = 'bg-institucional-azul-DEFAULT'
       >
         {tieneSubcategorias(seccion) ? (
           <span
-            class={`${BASE_COLOR} ${BG_HOVER} cursor-pointer font-cuerpo px-3 py-2 rounded-md text-sm font-medium flex items-center`}
+            class={`${BASE_COLOR} ${BG_HOVER} cursor-pointer  font-cuerpo px-3 py-2 rounded-md text-sm font-medium flex items-center`}
           >
             {seccion.nombre}
             <svg
@@ -52,7 +52,7 @@ const SUBCAT_BG = 'bg-institucional-azul-DEFAULT'
         {tieneSubcategorias(seccion) && (
           <ul
             class:list={[
-              `absolute left-0 mt-0 pt-2 ${SUBCAT_BG} rounded-b-lg shadow-xl min-w-[200px]`,
+              `absolute left-0 mt-0 pt-2 ${SUBCAT_BG} rounded-md shadow-xl min-w-[200px]`,
               'opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300',
             ]}
           >
@@ -60,7 +60,7 @@ const SUBCAT_BG = 'bg-institucional-azul-DEFAULT'
               <li class="subcategoria-item">
                 <a
                   href={sub.url}
-                  class="enlace-subcategoria block px-4 py-2 text-sm bg-white text-black hover:bg-blue-800 hover:text-institucional-azul-100 hover:border-2 hover:border-black transition duration-150"
+                  class="enlace-subcategoria block px-4 py-2 text-sm rounded-sm bg-white text-black hover:bg-blue-800 hover:text-institucional-azul-100 hover:border-2 hover:border-black transition duration-150"
                 >
                   {sub.nombre}
                 </a>
