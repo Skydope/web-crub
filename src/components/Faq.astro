@@ -1,0 +1,56 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  faqs: FAQItem[];
+  bgColor?: string;
+  maxWidth?: string;
+}
+
+const {
+  title = "Preguntas frecuentes",
+  subtitle = "Encuentra respuestas rápidas a las consultas más comunes",
+  faqs,
+  bgColor = "bg-white",
+  maxWidth = "max-w-3xl"
+} = Astro.props;
+---
+
+<section class={`py-16 ${bgColor}`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
+        {title}
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        {subtitle}
+      </p>
+    </div>
+
+    <div class={`${maxWidth} mx-auto space-y-4`}>
+      {faqs.map((faq) => (
+        <details class="bg-gray-50 rounded-lg p-6 group">
+          <summary class="font-semibold text-blue-900 cursor-pointer list-none flex items-center justify-between">
+            <span>{faq.question}</span>
+            <svg 
+              class="h-5 w-5 transform group-open:rotate-180 transition-transform flex-shrink-0 ml-4" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <p class="mt-4 text-gray-600">
+            {faq.answer}
+          </p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

@@ -2,6 +2,7 @@
 import Layout from "../../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import Banner from "../../../components/Banner.astro";
+import Faq from "../../../components/Faq.astro";
 
 export async function getStaticPaths() {
   const propuestas = await getCollection("propuestas");
@@ -24,6 +25,30 @@ export async function getStaticPaths() {
 
 const { propuesta, categoria } = Astro.props;
 const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+
+const faqsCarrera = [
+  {
+    question: "¿Qué necesito para inscribirme?",
+    answer: "Necesitas: certificado de secundario completo legalizado, fotocopia de DNI, 2 fotos 4x4, y completar el formulario de inscripción. Para estudiantes extranjeros, se requiere certificado de estudios apostillado y traducido por traductor público."
+  },
+  {
+    question: "¿Qué salida laboral tiene?",
+    answer: "Los egresados pueden desempeñarse en empresas públicas y privadas, desarrollar su práctica profesional de forma independiente, trabajar en organismos gubernamentales, centros de investigación, y emprendimientos propios del sector."
+  },
+  {
+    question: "¿Cuál es el costo de la carrera?",
+    answer: "La carrera es gratuita. Solo debes abonar el derecho a examen por materia rendida. Además, contamos con programas de becas para estudiantes que cumplan con los requisitos establecidos."
+  },
+  {
+    question: "¿Qué modalidad de cursada ofrecen?",
+    answer: "Ofrecemos modalidad presencial con clases de lunes a viernes en turno mañana y tarde. Algunas materias cuentan con opción semipresencial. La asistencia mínima requerida es del 75% para regularizar las materias."
+  },
+  {
+    question: "¿Cuándo comienzan las inscripciones?",
+    answer: "Las inscripciones para el ciclo lectivo se abren en diciembre y enero. Para el segundo cuatrimestre, hay un período especial en junio-julio. Te recomendamos estar atento a nuestras redes sociales y sitio web para las fechas exactas."
+  }
+];
+
 ---
 
 <Layout>
@@ -164,6 +189,12 @@ const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
           <article class="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-blue-600 prose-strong:text-gray-900">
             {propuesta.body}
           </article>
+          <!-- Preguntas Frecuentes -->
+  <Faq
+  title="Preguntas frecuentes"
+  subtitle="Resolvemos tus dudas sobre inscripción, cursada y más"
+  faqs={faqsCarrera}
+/>
         </div>
          <a 
       href={`/oferta/${categoria}`} 
