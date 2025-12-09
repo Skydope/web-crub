@@ -6,7 +6,7 @@ import Banner from "../../../components/Banner.astro";
 export async function getStaticPaths() {
   const propuestas = await getCollection("propuestas");
 
-  const paths = propuestas.map((p) => {
+  const paths = propuestas.map((p) => { 
     return {
       params: {
         categoria: p.data.nivel,
@@ -24,8 +24,8 @@ export async function getStaticPaths() {
 
 const { propuesta, categoria } = Astro.props;
 ---
-<Layout>
 
+<Layout>
   <Banner
     title={propuesta.data.titulo}
     description={propuesta.data.universidad}
@@ -33,48 +33,108 @@ const { propuesta, categoria } = Astro.props;
     heightClass="py-20"
   />
 
-  <section class="max-w-4xl mx-auto py-12 px-4">
-
+  <section class="max-w-7xl mx-auto py-12 px-4">
     <!-- Botón volver -->
     <a 
       href={`/oferta/${categoria}`} 
-      class="inline-block mb-6 text-blue-600 hover:underline text-sm"
+      class="inline-flex items-center gap-2 mb-8 text-blue-600 hover:text-blue-800 transition-colors font-medium"
     >
-      ← Volver a {categoria}
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Volver a {categoria}
     </a>
 
-    <!-- CARD PRINCIPAL -->
-    <div class="bg-white shadow-lg rounded-xl overflow-hidden">
-      
-      <!-- Imagen -->
-      <img 
-        src={`/img/logos-universidades/${propuesta.data.img}.jpg`} 
-        alt={propuesta.data.titulo}
-        class="w-full h-64 object-cover"
-      />
-
-      <!-- Contenido -->
-      <div class="p-8">
-
-        <h1 class="text-3xl font-bold mb-4 text-gray-900">
-          {propuesta.data.titulo}
-        </h1>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-          <p><strong>Universidad:</strong> {propuesta.data.universidad}</p>
-          <p><strong>Duración:</strong> {propuesta.data.duracion}</p>
-          <p><strong>Modalidad:</strong> {propuesta.data.modalidad}</p>
-          <p><strong>Financiamiento:</strong> {propuesta.data.financiamiento}</p>
+    <div class="grid lg:grid-cols-3 gap-8">
+      <!-- Columna izquierda - Panel de información -->
+      <aside class="lg:col-span-1">
+        <!-- Imagen destacada -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-6">
+          <img 
+            src={`/img/logos-universidades/${propuesta.data.img}.jpg`} 
+            alt={propuesta.data.titulo}
+            class="w-full h-56 object-cover"
+          />
         </div>
 
-        <!-- Contenido del body -->
-        <article class="prose max-w-none">
-          {propuesta.body}
-        </article>
+        <!-- Panel de datos clave -->
+        <div class="bg-white rounded-xl shadow-lg p-6 space-y-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4 border-b pb-3">
+            Información General
+          </h3>
 
-      </div>
+          <!-- Universidad -->
+          <div class="space-y-2">
+            <div class="flex items-center gap-2 text-gray-600 text-sm font-medium">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+              Universidad
+            </div>
+            <p class="text-gray-900 font-semibold pl-7">{propuesta.data.universidad}</p>
+          </div>
 
+          <!-- Duración -->
+          <div class="space-y-2">
+            <div class="flex items-center gap-2 text-gray-600 text-sm font-medium">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Duración
+            </div>
+            <p class="text-gray-900 font-semibold pl-7">{propuesta.data.duracion}</p>
+          </div>
+
+          <!-- Modalidad -->
+          <div class="space-y-2">
+            <div class="flex items-center gap-2 text-gray-600 text-sm font-medium">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              Modalidad
+            </div>
+            <p class="text-gray-900 font-semibold pl-7">{propuesta.data.modalidad}</p>
+          </div>
+
+          <!-- Financiamiento -->
+          <div class="space-y-2">
+            <div class="flex items-center gap-2 text-gray-600 text-sm font-medium">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Financiamiento
+            </div>
+            <p class="text-gray-900 font-semibold pl-7">{propuesta.data.financiamiento}</p>
+          </div>
+
+          <!-- Nivel/Categoría -->
+          <div class="space-y-2 pt-4 border-t">
+            <div class="flex items-center gap-2 text-gray-600 text-sm font-medium">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+              </svg>
+              Categoría
+            </div>
+            <span class="inline-block ml-7 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold">
+              {categoria}
+            </span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Columna derecha - Contenido principal -->
+      <main class="lg:col-span-2">
+        <div class="bg-white rounded-xl shadow-lg p-8">
+          <h1 class="text-3xl font-bold mb-6 text-gray-900 border-b pb-4">
+            {propuesta.data.titulo}
+          </h1>
+
+          <!-- Contenido del body -->
+          <article class="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-blue-600 prose-strong:text-gray-900">
+            {propuesta.body}
+          </article>
+        </div>
+      </main>
     </div>
-
   </section>
 </Layout>
