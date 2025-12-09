@@ -72,7 +72,7 @@ const { items } = Astro.props;
     let currentPosition = 0;
     let animationId = null;
     let isHovered = false;
-    const speed = 2; // píxeles por frame (ajustar para más o menos velocidad)
+    const speed = 1.5; // píxeles por frame (ajustar para más o menos velocidad)
     const totalWidth = track.scrollWidth / 2; // mitad porque duplicamos
 
     function animate() {
