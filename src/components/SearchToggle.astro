@@ -28,7 +28,7 @@
         action="/buscar"
         method="GET"
         id="search-form"
-        class="absolute right-0 flex items-center transform translate-x-full transition-all duration-300 opacity-0 invisible pointer-events-none"
+        class="absolute right-0 flex items-center transition-all duration-300 opacity-0 invisible scale-0 origin-right"
     >
         <input
             type="search"
@@ -66,37 +66,29 @@
 
         if (button && form) {
             button.addEventListener('click', () => {
-                const isOpen = form.classList.toggle('translate-x-full')
+                const isOpen = !form.classList.contains('scale-0')
 
-                form.classList.toggle('opacity-0')
-                form.classList.toggle('invisible')
-                form.classList.toggle('pointer-events-none')
-
-                if (!isOpen) {
-                    const input = form.querySelector(
-                        'input',
-                    ) as HTMLInputElement | null
-                    if (input) input.focus()
+                if (isOpen) {
+                    form.classList.add('scale-0', 'opacity-0', 'invisible')
+                } else {
+                    form.classList.remove('scale-0', 'opacity-0', 'invisible')
+                    const input = form.querySelector('input') as HTMLInputElement | null
+                    if (input) {
+                        setTimeout(() => input.focus(), 100)
+                    }
                 }
             })
 
             document.addEventListener('click', (event) => {
-                const container = document.getElementById(
-                    'search-toggle-container',
-                )
+                const container = document.getElementById('search-toggle-container')
                 const target = event.target
                 if (
                     container &&
                     target instanceof Node &&
                     !container.contains(target) &&
-                    !form.classList.contains('translate-x-full')
+                    !form.classList.contains('scale-0')
                 ) {
-                    form.classList.add(
-                        'translate-x-full',
-                        'opacity-0',
-                        'invisible',
-                        'pointer-events-none',
-                    )
+                    form.classList.add('scale-0', 'opacity-0', 'invisible')
                 }
             })
         }
