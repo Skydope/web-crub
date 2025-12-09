@@ -2,34 +2,14 @@
 const { seccion } = Astro.props
 ---
 
-<script is:inline client:load>
-  function toggleSubmenu(button) {
-    const submenu = button.nextElementSibling
-    const arrow = button.querySelector('svg')
-
-    if (!submenu) return
-
-    const isOpen = submenu.style.maxHeight && submenu.style.maxHeight !== '0px'
-
-    if (isOpen) {
-      submenu.style.maxHeight = '0'
-      arrow.classList.remove('rotate-180')
-    } else {
-      submenu.style.maxHeight = submenu.scrollHeight + 'px'
-      arrow.classList.add('rotate-180')
-    }
-  }
-</script>
-
 <div class="mobile-menu-item w-full">
   <button
     type="button"
-    class="w-full text-left px-4 py-3 text-base font-medium text-black hover:bg-blue-50 flex items-center justify-between transition duration-150"
-    on:click={(e) => toggleSubmenu(e.currentTarget)}
+    class="submenu-toggle w-full text-left px-4 py-3 text-base font-medium text-black hover:bg-blue-50 flex items-center justify-between transition duration-150"
   >
     <span class="font-cuerpo">{seccion.nombre}</span>
     <svg
-      class="w-5 h-5 transform transition-transform duration-200 flex-shrink-0"
+      class="submenu-arrow w-5 h-5 transform transition-transform duration-200 flex-shrink-0"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -44,7 +24,7 @@ const { seccion } = Astro.props
   </button>
 
   <ul
-    class="bg-gray-50 border-t border-gray-200 w-full overflow-hidden transition-all duration-300"
+    class="submenu-content bg-gray-50 border-t border-gray-200 w-full overflow-hidden transition-all duration-300"
     style="max-height: 0;"
   >
     {seccion.subcategorias?.map((sub) => (
@@ -59,3 +39,34 @@ const { seccion } = Astro.props
     ))}
   </ul>
 </div>
+
+<script>
+  function initializeSubmenus() {
+    const toggleButtons = document.querySelectorAll('.submenu-toggle');
+    
+    toggleButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const submenu = this.nextElementSibling;
+        const arrow = this.querySelector('.submenu-arrow');
+        
+        if (!submenu) return;
+        
+        const isOpen = submenu.style.maxHeight && submenu.style.maxHeight !== '0px';
+        
+        if (isOpen) {
+          submenu.style.maxHeight = '0';
+          arrow.classList.remove('rotate-180');
+        } else {
+          submenu.style.maxHeight = submenu.scrollHeight + 'px';
+          arrow.classList.add('rotate-180');
+        }
+      });
+    });
+  }
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', initializeSubmenus);
+  
+  // Re-initialize after navigation (for Astro view transitions)
+  document.addEventListener('astro:page-load', initializeSubmenus);
+</script>
