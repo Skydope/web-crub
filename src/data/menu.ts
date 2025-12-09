@@ -15,6 +15,7 @@ const menuItems: SeccionMenu[] = [
         url: "/institucional",
         subcategorias: [
             { nombre: "Historia", url: "/institucional/historia" },
+            { nombre:"Contacto", url: "/contacto" },
         ],
     },
     {
