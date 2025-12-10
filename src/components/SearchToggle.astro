@@ -1,7 +1,6 @@
 ---
-
+/* Nada en frontmatter */
 ---
-
 <div class="relative flex items-center" id="search-toggle-container">
     <button
         id="search-button"
@@ -24,22 +23,18 @@
         </svg>
     </button>
 
-    <form
-        action="/buscar"
-        method="GET"
+    <div
         id="search-form"
         class="absolute right-0 flex items-center transition-all duration-300 opacity-0 invisible scale-0 origin-right"
     >
         <input
+            id="search-input"
             type="search"
-            name="q"
             placeholder="Buscar..."
-            aria-label="Campo de búsqueda"
             class="w-40 px-3 py-1.5 rounded-l-md text-sm text-institucional-azul-900 bg-white focus:outline-none focus:ring-2 focus:ring-institucional-azul-600"
         />
         <button
-            type="submit"
-            aria-label="Submit search"
+            id="search-submit"
             class="bg-institucional-oro text-institucional-azul-900 p-2 rounded-r-md hover:opacity-80 transition duration-150"
         >
             <svg
@@ -56,41 +51,80 @@
                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
             </svg>
         </button>
-    </form>
+    </div>
+
+    <!-- Resultados -->
+    <div
+        id="search-results"
+        class="absolute top-12 right-0 bg-white shadow-lg rounded-lg w-64 max-h-80 overflow-y-auto hidden p-3 z-50"
+    ></div>
 </div>
 
+<!-- Fuse desde CDN -->
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const button = document.getElementById('search-button')
-        const form = document.getElementById('search-form')
+    document.addEventListener("DOMContentLoaded", async () => {
+        const button = document.getElementById("search-button");
+        const form = document.getElementById("search-form");
+        const input = document.getElementById("search-input");
+        const resultsBox = document.getElementById("search-results");
 
-        if (button && form) {
-            button.addEventListener('click', () => {
-                const isOpen = !form.classList.contains('scale-0')
+        // Obtener JSON generado por Astro
+        const data = await fetch("/buscar.json").then((r) => r.json());
 
-                if (isOpen) {
-                    form.classList.add('scale-0', 'opacity-0', 'invisible')
-                } else {
-                    form.classList.remove('scale-0', 'opacity-0', 'invisible')
-                    const input = form.querySelector('input') as HTMLInputElement | null
-                    if (input) {
-                        setTimeout(() => input.focus(), 100)
-                    }
-                }
-            })
+        // Crear Fuse
+        const fuse = new Fuse(data, {
+            keys: ["titulo", "descripcion", "categoria", "content"],
+            threshold: 0.35,
+        });
 
-            document.addEventListener('click', (event) => {
-                const container = document.getElementById('search-toggle-container')
-                const target = event.target
-                if (
-                    container &&
-                    target instanceof Node &&
-                    !container.contains(target) &&
-                    !form.classList.contains('scale-0')
-                ) {
-                    form.classList.add('scale-0', 'opacity-0', 'invisible')
-                }
-            })
-        }
-    })
+        // Abrir / cerrar con animación
+        button.addEventListener("click", () => {
+            const isOpen = !form.classList.contains("scale-0");
+
+            if (isOpen) {
+                form.classList.add("scale-0", "opacity-0", "invisible");
+                resultsBox.classList.add("hidden");
+            } else {
+                form.classList.remove("scale-0", "opacity-0", "invisible");
+                setTimeout(() => input.focus(), 150);
+            }
+        });
+
+        // Cerrar cuando hacen click afuera
+        document.addEventListener("click", (event) => {
+            const container = document.getElementById("search-toggle-container");
+            if (!container.contains(event.target)) {
+                form.classList.add("scale-0", "opacity-0", "invisible");
+                resultsBox.classList.add("hidden");
+            }
+        });
+
+        // Buscar en tiempo real
+        input.addEventListener("input", () => {
+            const query = input.value.trim();
+
+            if (query.length < 2) {
+                resultsBox.classList.add("hidden");
+                return;
+            }
+
+            const results = fuse.search(query);
+
+            // Render resultados
+            resultsBox.innerHTML = results
+                .map(
+                    (r) => `
+                    <a href="/${r.item.slug}" class="block p-2 rounded hover:bg-gray-200 transition">
+                        <p class="font-semibold">${r.item.titulo}</p>
+                        <p class="text-xs text-gray-600">${r.item.categoria}</p>
+                    </a>
+                `
+                )
+                .join("");
+
+            resultsBox.classList.remove("hidden");
+        });
+    });
 </script>
