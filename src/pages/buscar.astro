@@ -1,0 +1,235 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Resultados de búsqueda">
+    <!-- Banner superior con gradiente institucional -->
+    <section class="relative bg-gradient-to-r from-[#003366] to-[#025fbd] text-white py-16 overflow-hidden">
+        <!-- Patrón decorativo de fondo -->
+        <div class="absolute inset-0 opacity-10">
+            <div
+                class="absolute inset-0"
+                style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Ccircle cx=\'7\' cy=\'7\' r=\'7\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"
+            ></div>
+        </div>
+
+        <div class="relative max-w-4xl mx-auto px-4">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                    Búsqueda
+                </h1>
+                <p class="text-xl opacity-90">
+                    Encuentra información sobre nuestra oferta académica y servicios
+                </p>
+            </div>
+
+            <!-- Input de búsqueda mejorado con diseño moderno -->
+            <div class="relative">
+                <input
+                    id="search-input-page"
+                    type="search"
+                    placeholder="¿Qué estás buscando?"
+                    class="w-full px-6 py-4 pl-14 rounded-xl text-gray-900 bg-white shadow-2xl focus:outline-none focus:ring-4 focus:ring-white/30 text-lg"
+                />
+                <svg 
+                    class="absolute left-5 top-1/2 transform -translate-y-1/2 h-6 w-6 text-gray-400"
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Container de resultados con mejor diseño -->
+    <div class="bg-gray-50 min-h-screen">
+        <div class="container mx-auto px-4 py-12 max-w-4xl">
+            <!-- Display de query con diseño mejorado -->
+            <div id="search-query-display" class="mb-8 hidden">
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+                    <span class="text-gray-600">Resultados para: </span>
+                    <span id="query-text" class="font-semibold text-[#003366]"></span>
+                </div>
+            </div>
+
+            <!-- Loading indicator mejorado -->
+            <div id="loading-indicator" class="hidden">
+                <div class="bg-white rounded-lg shadow-sm p-12 text-center">
+                    <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-gray-200 border-t-[#025fbd]"></div>
+                    <p class="mt-4 text-gray-600 font-medium">Buscando contenido...</p>
+                </div>
+            </div>
+
+            <!-- Resultados con diseño mejorado -->
+            <div id="search-results-page" class="space-y-6">
+                <div class="bg-white rounded-lg shadow-sm p-12 text-center">
+                    <svg class="mx-auto h-16 w-16 text-gray-300 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <p class="text-gray-500 text-lg">Escribe algo para comenzar tu búsqueda</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</BaseLayout>
+
+<script>
+    import { createFuse } from '../scripts/fuse-search.js';
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        const input = document.getElementById('search-input-page');
+        const resultsContainer = document.getElementById('search-results-page');
+        const queryDisplay = document.getElementById('search-query-display');
+        const queryText = document.getElementById('query-text');
+        const loadingIndicator = document.getElementById('loading-indicator');
+
+        // Obtener query de URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const initialQuery = urlParams.get('q') || '';
+
+        if (initialQuery) {
+            input.value = initialQuery;
+        }
+
+        // Cargar datos
+        let fuse;
+        try {
+            loadingIndicator.classList.remove('hidden');
+            const data = await fetch(`/buscar.json?ts=${Date.now()}`, {
+                cache: 'no-store',
+            }).then(res => res.json());
+            fuse = createFuse(data);
+            loadingIndicator.classList.add('hidden');
+
+            // Si hay query inicial, buscar
+            if (initialQuery) {
+                performSearch(initialQuery);
+            }
+        } catch (error) {
+            console.error('Error cargando datos:', error);
+            resultsContainer.innerHTML = `
+                <div class="bg-red-50 border-2 border-red-200 rounded-xl p-6 shadow-sm">
+                    <div class="flex items-center gap-3">
+                        <svg class="h-6 w-6 text-red-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div>
+                            <p class="text-red-800 font-semibold">Error al cargar los datos de búsqueda</p>
+                            <p class="text-red-600 text-sm mt-1">Por favor, intenta de nuevo más tarde</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            loadingIndicator.classList.add('hidden');
+        }
+
+        function performSearch(query) {
+            const trimmedQuery = query.trim();
+
+            if (trimmedQuery.length < 2) {
+                resultsContainer.innerHTML = `
+                    <div class="bg-white rounded-lg shadow-sm p-12 text-center">
+                        <svg class="mx-auto h-16 w-16 text-gray-300 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
+                        <p class="text-gray-500 text-lg">Escribe al menos 2 caracteres para buscar</p>
+                    </div>
+                `;
+                queryDisplay.classList.add('hidden');
+                return;
+            }
+
+            queryDisplay.classList.remove('hidden');
+            queryText.textContent = trimmedQuery;
+
+            const results = fuse.search(trimmedQuery);
+
+            if (results.length === 0) {
+                resultsContainer.innerHTML = `
+                    <div class="bg-white rounded-lg shadow-sm p-12 text-center">
+                        <svg class="mx-auto h-20 w-20 text-gray-300 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <p class="text-gray-700 text-xl font-semibold mb-2">No se encontraron resultados</p>
+                        <p class="text-gray-500">No hay coincidencias para <strong>"${trimmedQuery}"</strong></p>
+                        <p class="text-gray-400 text-sm mt-3">Intenta con otros términos de búsqueda o revisa la ortografía</p>
+                    </div>
+                `;
+                return;
+            }
+
+            resultsContainer.innerHTML = `
+                <div class="bg-gradient-to-r from-[#003366] to-[#025fbd] text-white rounded-lg shadow-sm px-6 py-3 mb-6">
+                    <p class="font-medium">
+                        <span class="text-2xl font-bold">${results.length}</span> 
+                        resultado${results.length !== 1 ? 's' : ''} encontrado${results.length !== 1 ? 's' : ''}
+                    </p>
+                </div>
+                ${results.map(r => `
+                    <article class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl hover:border-[#025fbd]/30 transition-all duration-300 group">
+                        <a href="/${r.item.slug}" class="block">
+                            <div class="p-6">
+                                ${r.item.imagen ? `
+                                    <div class="mb-5">
+                                        <img 
+                                            src="${r.item.imagen}" 
+                                            alt="${r.item.titulo}"
+                                            class="w-full h-56 object-cover rounded-lg shadow-md group-hover:shadow-xl group-hover:scale-[1.02] transition-all duration-300"
+                                        />
+                                    </div>
+                                ` : ''}
+                                <div class="flex items-start justify-between gap-4 mb-3">
+                                    <h2 class="text-2xl font-bold text-[#003366] group-hover:text-[#025fbd] transition-colors">
+                                        ${r.item.titulo}
+                                    </h2>
+                                    <svg class="w-6 h-6 text-gray-400 group-hover:text-[#025fbd] group-hover:translate-x-1 transition-all flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                                ${r.item.categoria ? `
+                                    <span class="inline-flex items-center px-3 py-1 text-xs font-semibold bg-gradient-to-r from-[#003366] to-[#025fbd] text-white rounded-full mb-3">
+                                        ${r.item.categoria}
+                                    </span>
+                                ` : ''}
+                                ${r.item.descripcion ? `
+                                    <p class="text-gray-600 leading-relaxed line-clamp-2">
+                                        ${r.item.descripcion}
+                                    </p>
+                                ` : ''}
+                            </div>
+                        </a>
+                    </article>
+                `).join('')}
+            `;
+        }
+
+        // Búsqueda en tiempo real
+        let searchTimeout;
+        input.addEventListener('input', () => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                const query = input.value;
+                performSearch(query);
+                
+                // Actualizar URL sin recargar
+                const newUrl = new URL(window.location);
+                if (query.trim()) {
+                    newUrl.searchParams.set('q', query);
+                } else {
+                    newUrl.searchParams.delete('q');
+                }
+                window.history.replaceState({}, '', newUrl);
+            }, 300);
+        });
+
+        // Búsqueda al presionar Enter
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                clearTimeout(searchTimeout);
+                performSearch(input.value);
+            }
+        });
+    });
+</script>

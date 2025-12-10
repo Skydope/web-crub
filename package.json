@@ -11,6 +11,8 @@
   "dependencies": {
     "@astrojs/react": "^4.4.1",
     "astro": "^5.15.3",
+    "fuse.js": "^7.1.0",
+    "gray-matter": "^4.0.3",
     "react": "^19.2.1",
     "react-dom": "^19.2.1"
   },
