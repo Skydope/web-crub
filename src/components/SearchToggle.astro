@@ -4,15 +4,15 @@
 <div class="relative flex items-center" id="search-toggle-container">
     <!-- Botón con hover más profesional y sombra sutil -->
     <button
-        id="search-button"
+        id="search-toggle-button"
         type="button"
         aria-label="Toggle search form"
-        class="transition-all duration-300 p-2 rounded-full hover:bg-gradient-to-r from-institucional-azul-700 to-institucional-azul-500 hover:text-white hover:shadow-lg hover:scale-104 active:scale-95"
+        class="transition-all duration-300 p-2 rounded-full hover:bg-institucional-azul-600 hover:shadow-lg hover:scale-110 active:scale-95"
     >
         <svg
-            id="svg-lupa"
+            id="search-lupa-icon"
             xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 transition-transform duration-300"
+            class="h-6 w-6 transition-all duration-300"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -39,7 +39,7 @@
         <!-- Botón de búsqueda con gradiente azul institucional sobrio -->
         <button
             id="search-submit"
-            class="bg-gradient-to-r from-institucional-azul-700 to-institucional-azul-500 text-white p-3 rounded-r-lg hover:from-institucional-azul-600 hover:to-institucional-azul-400 transition-all duration-300 active:scale-95 shadow-lg"
+            class="bg-gradient-to-r from-institucional-azul-700 to-institucional-azul-500 text-white p-2 rounded-r-lg hover:from-institucional-azul-600 hover:to-institucional-azul-400 transition-all duration-300 active:scale-95 shadow-lg"
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -59,15 +59,124 @@
 
     <!-- Panel de resultados con sombra más profesional y bordes redondeados -->
     <div
-        id="search-results"
+        id="search-results-box"
         class="absolute top-14 right-0 bg-white shadow-2xl rounded-xl w-72 max-h-96 overflow-y-auto hidden z-50 border border-gray-100 backdrop-blur-sm animate-in fade-in slide-in-from-top-2 duration-300"
     >
         <div class="p-3 space-y-2"></div>
     </div>
 </div>
 
-<!--  JS bundleado por Astro/Vite -->
-<script type="module" src="/src/scripts/search-toggle-client.js"></script>
+<!-- Script inline para evitar problemas de 404 en producción -->
+<script>
+  import { createFuse } from "../scripts/fuse-search.js"
+
+  document.addEventListener("DOMContentLoaded", async () => {
+    const button = document.getElementById("search-toggle-button")
+    const form = document.getElementById("search-form")
+    const input = document.getElementById("search-input")
+    const resultsBox = document.getElementById("search-results-box")
+    const submitButton = document.getElementById("search-submit")
+    const lupa = document.getElementById("search-lupa-icon")
+
+    // Fix mobile cache
+    const data = await fetch(`/buscar.json?ts=${Date.now()}`, {
+      cache: "no-store",
+    }).then((res) => res.json())
+
+    const fuse = createFuse(data)
+
+    // Abrir/cerrar
+    button.addEventListener("click", () => {
+      const isOpen = !form.classList.contains("opacity-0")
+
+      if (isOpen) {
+        // Cerrando: mostrar lupa, ocultar formulario
+        form.classList.add("opacity-0", "invisible", "-translate-x-4", "scale-95")
+        resultsBox.classList.add("hidden")
+        lupa.classList.remove("scale-0", "opacity-0")
+      } else {
+        // Abriendo: ocultar lupa, mostrar formulario
+        form.classList.remove("opacity-0", "invisible", "-translate-x-4", "scale-95")
+        lupa.classList.add("scale-0", "opacity-0")
+        setTimeout(() => input.focus({ preventScroll: true }), 150)
+      }
+    })
+
+    // Cerrar al hacer click afuera
+    document.addEventListener("pointerdown", (event) => {
+      const container = document.getElementById("search-toggle-container")
+      if (!container.contains(event.target)) {
+        form.classList.add("opacity-0", "invisible", "-translate-x-4", "scale-95")
+        resultsBox.classList.add("hidden")
+        lupa.classList.remove("scale-0", "opacity-0")
+      }
+    })
+
+    // Búsqueda en dropdown
+    const handleQuery = () => {
+      const query = input.value.trim()
+
+      if (query.length < 2) {
+        resultsBox.classList.add("hidden")
+        return
+      }
+
+      const results = fuse.search(query)
+
+      if (results.length === 0) {
+        resultsBox.innerHTML = `<div class="p-2 text-sm text-gray-500">Sin resultados</div>`
+        resultsBox.classList.remove("hidden")
+        return
+      }
+
+      resultsBox.innerHTML = results
+        .slice(0, 5)
+        .map(
+          (r) => `
+          <a href="/${r.item.slug}" class="block p-2 rounded hover:bg-gray-200 transition">
+              <p class="font-semibold">${r.item.titulo}</p>
+              <p class="text-xs text-gray-600">${r.item.categoria}</p>
+          </a>
+      `
+        )
+        .join("")
+
+      // Agregar link para ver todos los resultados
+      if (results.length > 5) {
+        resultsBox.innerHTML += `
+          <a href="/buscar?q=${encodeURIComponent(query)}" 
+             class="block p-2 text-center text-sm text-institucional-azul-600 hover:bg-gray-100 border-t border-gray-200 font-medium">
+              Ver todos los resultados (${results.length})
+          </a>
+      `
+      }
+
+      resultsBox.classList.remove("hidden")
+    }
+
+    input.addEventListener("input", handleQuery)
+    input.addEventListener("keyup", handleQuery)
+
+    // Submit button - redirige a página de resultados
+    submitButton.addEventListener("click", () => {
+      const query = input.value.trim()
+      if (query) {
+        window.location.href = `/buscar?q=${encodeURIComponent(query)}`
+      }
+    })
+
+    // Enter en el input también va a la página de resultados
+    input.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault()
+        const query = input.value.trim()
+        if (query) {
+          window.location.href = `/buscar?q=${encodeURIComponent(query)}`
+        }
+      }
+    })
+  })
+</script>
 
 <style>
     /* Añadiendo animaciones personalizadas más profesionales */
@@ -77,21 +186,21 @@
         transform: translateX(0) scale(1);
     }
 
-    #search-results::-webkit-scrollbar {
+    #search-results-box::-webkit-scrollbar {
         width: 6px;
     }
 
-    #search-results::-webkit-scrollbar-track {
+    #search-results-box::-webkit-scrollbar-track {
         background: #f1f1f1;
         border-radius: 10px;
     }
 
-    #search-results::-webkit-scrollbar-thumb {
+    #search-results-box::-webkit-scrollbar-thumb {
         background: linear-gradient(180deg, #003366, #025fbd);
         border-radius: 10px;
     }
 
-    #search-results::-webkit-scrollbar-thumb:hover {
+    #search-results-box::-webkit-scrollbar-thumb:hover {
         background: linear-gradient(180deg, #025fbd, #003366);
     }
 
@@ -105,12 +214,17 @@
         }
     }
 
-    #search-button:hover svg {
+    #search-toggle-button:hover svg {
         animation: subtle-pulse 3s ease-in-out infinite;
     }
 
     /* Efecto de resplandor más sobrio con colores institucionales */
     #search-input:focus {
         box-shadow: 0 0 0 3px rgba(2, 95, 189, 0.08), 0 8px 20px -4px rgba(0, 51, 102, 0.12);
+    }
+
+    /* Transiciones suaves para la lupa */
+    #search-lupa-icon {
+        transition: opacity 300ms ease-out, transform 300ms ease-out;
     }
 </style>
