@@ -47,7 +47,7 @@ const tituloBanner = titulos[categoria] ?? "Propuestas académicas";
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {propuestasFiltradas.map((p) => (
-        <a href={`/oferta/${categoria}/${p.slug.split("/").pop()}`}>
+        <a href={`/propuestas/${categoria}/${p.slug.split("/").pop()}`}>
         <article class="p-4 bg-white rounded-lg shadow-md">
           <img 
             src={`/img/logos-universidades/${p.data.img}.jpg`} alt={p.data.universidad} 
