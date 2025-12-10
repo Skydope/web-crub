@@ -2,15 +2,17 @@
 /* Nada en frontmatter */
 ---
 <div class="relative flex items-center" id="search-toggle-container">
+    <!-- Botón con hover más profesional y sombra sutil -->
     <button
         id="search-button"
         type="button"
         aria-label="Toggle search form"
-        class="transition duration-150 p-2 rounded-full"
+        class="transition-all duration-300 p-2 rounded-full hover:bg-gradient-to-r from-institucional-azul-700 to-institucional-azul-500 hover:text-white hover:shadow-lg hover:scale-104 active:scale-95"
     >
         <svg
+            id="svg-lupa"
             xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
+            class="h-6 w-6 transition-transform duration-300"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -23,19 +25,21 @@
         </svg>
     </button>
 
+    <!-- Formulario con animaciones profesionales, sombra elegante y gradiente -->
     <div
         id="search-form"
-        class="absolute right-0 flex items-center transition-all duration-300 opacity-0 invisible scale-0 origin-right"
+        class="absolute right-0 flex items-center transition-all duration-500 ease-out opacity-0 invisible -translate-x-4 scale-95 origin-right"
     >
         <input
             id="search-input"
             type="search"
             placeholder="Buscar..."
-            class="w-40 px-3 py-1.5 rounded-l-md text-sm text-institucional-azul-900 bg-white focus:outline-none focus:ring-2 focus:ring-institucional-azul-600"
+            class="w-48 px-4 py-2 rounded-l-lg text-sm text-institucional-azul-900 bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-institucional-azul-600 focus:shadow-xl transition-all duration-300 placeholder:text-gray-400"
         />
+        <!-- Botón de búsqueda con gradiente azul institucional sobrio -->
         <button
-            id="search-button"
-            class="bg-institucional-oro text-institucional-azul-900 p-2 rounded-r-md hover:opacity-80 transition duration-150"
+            id="search-submit"
+            class="bg-gradient-to-r from-institucional-azul-700 to-institucional-azul-500 text-white p-3 rounded-r-lg hover:from-institucional-azul-600 hover:to-institucional-azul-400 transition-all duration-300 active:scale-95 shadow-lg"
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -53,12 +57,60 @@
         </button>
     </div>
 
+    <!-- Panel de resultados con sombra más profesional y bordes redondeados -->
     <div
         id="search-results"
-        class="absolute top-12 right-0 bg-white shadow-lg rounded-lg w-64 max-h-80 overflow-y-auto hidden p-3 z-50"
-    ></div>
+        class="absolute top-14 right-0 bg-white shadow-2xl rounded-xl w-72 max-h-96 overflow-y-auto hidden z-50 border border-gray-100 backdrop-blur-sm animate-in fade-in slide-in-from-top-2 duration-300"
+    >
+        <div class="p-3 space-y-2"></div>
+    </div>
 </div>
 
 <!--  JS bundleado por Astro/Vite -->
 <script type="module" src="/src/scripts/search-toggle-client.js"></script>
 
+<style>
+    /* Añadiendo animaciones personalizadas más profesionales */
+    #search-form.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0) scale(1);
+    }
+
+    #search-results::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    #search-results::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+
+    #search-results::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #003366, #025fbd);
+        border-radius: 10px;
+    }
+
+    #search-results::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #025fbd, #003366);
+    }
+
+    /* Animación de pulso más sutil y sobria */
+    @keyframes subtle-pulse {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.85;
+        }
+    }
+
+    #search-button:hover svg {
+        animation: subtle-pulse 3s ease-in-out infinite;
+    }
+
+    /* Efecto de resplandor más sobrio con colores institucionales */
+    #search-input:focus {
+        box-shadow: 0 0 0 3px rgba(2, 95, 189, 0.08), 0 8px 20px -4px rgba(0, 51, 102, 0.12);
+    }
+</style>

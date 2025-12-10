@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const input = document.getElementById("search-input");
     const resultsBox = document.getElementById("search-results");
     const submitButton = document.getElementById("search-submit");
+    const lupa = document.getElementById("svg-lupa")
 
     // Fix mobile cache
     const data = await fetch(`/buscar.json?ts=${Date.now()}`, {
@@ -21,8 +22,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (isOpen) {
             form.classList.add("scale-0", "opacity-0", "invisible");
             resultsBox.classList.add("hidden");
+            lupa.classList.remove("scale-0", "opacity-0", "invisible")
+           
         } else {
             form.classList.remove("scale-0", "opacity-0", "invisible");
+             lupa.classList.add("scale-0", "opacity-0", "invisible");
             setTimeout(() => input.focus({ preventScroll: true }), 150);
         }
     });
@@ -33,6 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (!container.contains(event.target)) {
             form.classList.add("scale-0", "opacity-0", "invisible");
             resultsBox.classList.add("hidden");
+            lupa.classList.remove("scale-0", "opacity-0", "invisible")
         }
     });
 
