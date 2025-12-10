@@ -20,11 +20,11 @@ const menuItems: SeccionMenu[] = [
     },
     {
         nombre: "Propuesta Académica",
-        url: "/oferta",
+        url: "/propuestas",
         subcategorias: [
-            { nombre: "Grado", url: "/oferta/grado" },
-            { nombre: "Pregrado", url: "/oferta/pregrado" },
-            { nombre: "Diplomaturas", url: "/oferta/diplomaturas" },
+            { nombre: "Grado", url: "/propuestas/grado" },
+            { nombre: "Pregrado", url: "/propuestas/pregrado" },
+            { nombre: "Diplomaturas", url: "/propuestas/diplomaturas" },
         ],
     },
     {
