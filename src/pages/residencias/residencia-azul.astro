@@ -5,7 +5,7 @@ import Map from '../../components/Map.astro'
 ---
 
 <BaseLayout
-  title="Residencia-la-plata"
+  title="Casas en Azul"
   description="Página que muestra una de las residencias que ofrece la institución."
 >
  <Banner
@@ -17,19 +17,39 @@ import Map from '../../components/Map.astro'
 
   <section class="max-w-5xl mx-auto py-12 grid grid-cols-1 md:grid-cols-2 gap-8">
 
-    <!-- CASA 1 -->
-    <article class="bg-white rounded-xl shadow-md p-6">
-      <h2 class="text-xl font-bold mb-2">COMPLEJO DE 3 CASAS</h2>
-      <p class="text-gray-700 mb-4">Están ubicadas en el campus universitario, en Av. República de
-                Italia y Av. Manuel Chávez.</p>
+    
 
+  <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+    <a href="/residencias/complejo-azul">
+    <div class="relative h-48">
+      <img 
+      src="/placeholder.svg?height=300&width=400" 
+      alt="Imagen de Complejo de 3 casas en campus unicen"
+      class="w-full h-full object-cover"
+    />
+          
+  </div>
+  <div class="p-6">
+    <h3 class="text-xl font-bold text-gray-900 mb-2">Facultad de Agronomía - UNICEN</h3>
+    <p class="text-gray-600 mb-4 flex items-center gap-2">
+      <svg class="w-5 h-5 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+        Av. República de
+                Italia y Av. Manuel Chávez
+    </p>
+    <div class="rounded-lg overflow-hidden mb-4">
       <Map 
-        title=""
+        title="Complejo de 3 casas - Campus UNICEN"
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3196.161505952354!2d-59.8819988235907!3d-36.766692810941315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959427b7345a13e5%3A0xa1e12dff6b7178eb!2sAv.%20Rep%C3%BAblica%20de%20Italia%20%26%20Av.%20Manuel%20Chaves%2C%20B7300%20Azul%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1764869167832!5m2!1ses-419!2sar"
         width="100%"
-        height="250"
+        height="200"
       />
-    </article>
+    </div>
+  </div>
+  </a>
+</article>
 
   </section>
 </BaseLayout>

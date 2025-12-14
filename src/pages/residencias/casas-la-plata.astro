@@ -1,0 +1,352 @@
+---
+import Banner from '../../components/Banner.astro'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Map from '../../components/Map.astro'
+---
+
+<BaseLayout
+  title="Residencias en La Plata"
+  description="Residencias estudiantiles en La Plata para estudiantes del CRUB"
+>
+  <Banner
+    title="Residencias en La Plata"
+    description="Alojamiento de calidad para estudiantes bolivarenses que cursan en universidades de La Plata"
+    showButton={false}
+    heightClass="py-20"
+    gradient="from-blue-900 to-blue-700"
+  />
+
+  <!-- Hero Section con información principal -->
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+      <div class="grid md:grid-cols-2 gap-0">
+        <!-- Imagen principal -->
+        <div class="relative h-80 md:h-auto">
+          <img 
+            src="/placeholder.svg?height=600&width=800" 
+            alt="Residencia La Plata"
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute top-4 left-4 bg-blue-900 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+            3 Casas Disponibles
+          </div>
+        </div>
+        
+        <!-- Info principal -->
+        <div class="p-8 md:p-12 flex flex-col justify-center">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Tu hogar mientras estudias
+          </h2>
+          <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+            La decisión política de la actual gestión municipal puso el acento en invertir en educación a través del proyecto de residencias estudiantiales en la ciudad de La Plata, facilitando el acceso a la educación superior.
+          </p>
+          
+          <!-- Características destacadas -->
+          <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm text-gray-600">Habitaciones</p>
+                <p class="font-semibold text-gray-900">Compartidas</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm text-gray-600">Ubicación</p>
+                <p class="font-semibold text-gray-900">La Plata</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm text-gray-600">Costo</p>
+                <p class="font-semibold text-gray-900">Subsidiado</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm text-gray-600">Seguridad</p>
+                <p class="font-semibold text-gray-900">24/7</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="#contacto" class="inline-flex items-center justify-center gap-2 bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-all duration-300 transform hover:scale-105 shadow-lg">
+            Solicitar información
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galería de imágenes -->
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8">Galería de imágenes</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="col-span-2 row-span-2 relative group overflow-hidden rounded-xl shadow-lg cursor-pointer">
+        <img 
+          src="/placeholder.svg?height=600&width=600" 
+          alt="Habitación compartida"
+          class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div class="absolute bottom-4 left-4 text-white">
+            <p class="font-semibold text-lg">Habitaciones</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="relative group overflow-hidden rounded-xl shadow-lg cursor-pointer">
+        <img 
+          src="/placeholder.svg?height=300&width=300" 
+          alt="Cocina comedor"
+          class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div class="absolute bottom-2 left-2 text-white">
+            <p class="font-semibold">Cocina</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="relative group overflow-hidden rounded-xl shadow-lg cursor-pointer">
+        <img 
+          src="/placeholder.svg?height=300&width=300" 
+          alt="Sala común"
+          class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div class="absolute bottom-2 left-2 text-white">
+            <p class="font-semibold">Sala común</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="relative group overflow-hidden rounded-xl shadow-lg cursor-pointer">
+        <img 
+          src="/placeholder.svg?height=300&width=300" 
+          alt="Área de estudio"
+          class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div class="absolute bottom-2 left-2 text-white">
+            <p class="font-semibold">Área de estudio</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="relative group overflow-hidden rounded-xl shadow-lg cursor-pointer">
+        <img 
+          src="/placeholder.svg?height=300&width=300" 
+          alt="Baño"
+          class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div class="absolute bottom-2 left-2 text-white">
+            <p class="font-semibold">Baños</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Amenidades -->
+  <section class="bg-gray-50 py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Servicios incluidos</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300">
+          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-7 h-7 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Internet WiFi</h3>
+          <p class="text-gray-600">Conexión de alta velocidad en todas las áreas</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300">
+          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-7 h-7 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Cocina equipada</h3>
+          <p class="text-gray-600">Heladera, microondas y todos los utensilios</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300">
+          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-7 h-7 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Limpieza</h3>
+          <p class="text-gray-600">Servicio de limpieza en áreas comunes</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300">
+          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-7 h-7 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Servicios incluidos</h3>
+          <p class="text-gray-600">Luz, gas y agua incluidos en el costo</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300">
+          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-7 h-7 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Seguridad</h3>
+          <p class="text-gray-600">Acceso controlado y vigilancia</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300">
+          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-7 h-7 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Áreas comunes</h3>
+          <p class="text-gray-600">Espacios para socializar y estudiar</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ubicaciones -->
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8">Nuestras residencias</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      
+      <!-- Casa 1 -->
+      <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+        <div class="relative h-48">
+          <img 
+            src="/placeholder.svg?height=300&width=400" 
+            alt="Casa 1"
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute top-3 right-3 bg-white px-3 py-1 rounded-full text-sm font-semibold text-gray-900">
+            Casa 1
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Calle 6 nro. 1168</h3>
+          <p class="text-gray-600 mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            Entre 56 y 57, La Plata
+          </p>
+          <div class="rounded-lg overflow-hidden mb-4">
+            <Map 
+              title="Casa 1 - La Plata"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3274.336902837547!2d-57.95280932367647!3d-34.91870837378003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e62cb43f1c4f%3A0xf4da751b4a1cb43!2sC.%206%201168%2C%20B1900%20La%20Plata%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1700000000000"
+              width="100%"
+              height="200"
+            />
+          </div>
+        </div>
+      </article>
+
+      <!-- Casa 2 -->
+      <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+        <div class="relative h-48">
+          <img 
+            src="/placeholder.svg?height=300&width=400" 
+            alt="Casa 2"
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute top-3 right-3 bg-white px-3 py-1 rounded-full text-sm font-semibold text-gray-900">
+            Casa 2
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Calle 4 nro. 524</h3>
+          <p class="text-gray-600 mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            Prolongación 61, Berisso
+          </p>
+          <div class="rounded-lg overflow-hidden mb-4">
+            <Map 
+              title="Casa 2 - Berisso"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3274.676083874409!2d-57.88360222367701!3d-34.909874173777986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e6fbca3ad3cf%3A0x8bb6a4e0055e1c25!2sC.%204%20524%2C%20Berisso%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1700000000001"
+              width="100%"
+              height="200"
+            />
+          </div>
+        </div>
+      </article>
+
+      <!-- Casa 3 -->
+      <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+        <div class="relative h-48">
+          <img 
+            src="/placeholder.svg?height=300&width=400" 
+            alt="Casa 3"
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute top-3 right-3 bg-white px-3 py-1 rounded-full text-sm font-semibold text-gray-900">
+            Casa 3
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Calle 5</h3>
+          <p class="text-gray-600 mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            Entre 69 y 70, La Plata
+          </p>
+          <div class="rounded-lg overflow-hidden mb-4">
+            <Map 
+              title="Casa 3 - La Plata"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3275.0253493927714!2d-57.95740292367748!3d-34.90074227377453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e62ff76d5259%3A0x8bdb12c90e5d7d21!2sC.%205%2070%2C%20B1904%20La%20Plata%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1700000000002"
+              width="100%"
+              height="200"
+            />
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+
+</BaseLayout>
