@@ -5,7 +5,7 @@ import Map from '../../components/Map.astro'
 ---
 
 <BaseLayout
-  title="Residencia-la-plata"
+  title="Casas en La Plata"
   description="Página que muestra una de las residencias que ofrece la institución."
 >
   <Banner
@@ -15,46 +15,113 @@ import Map from '../../components/Map.astro'
     heightClass="py-20"
   />
 
-  <section class="max-w-5xl mx-auto py-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Ubicaciones -->
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8">Nuestras residencias</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      
+      <!-- Casa 1 -->
+      <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+           <a href="/residencias/casas-la-plata">
+        <div class="relative h-48">
+          <img 
+            src="/placeholder.svg?height=300&width=400" 
+            alt="Casa 1"
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute top-3 right-3 bg-white px-3 py-1 rounded-full text-sm font-semibold text-gray-900">
+            Casa 1
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Calle 6 nro. 1168</h3>
+          <p class="text-gray-600 mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            Entre 56 y 57, La Plata
+          </p>
+          <div class="rounded-lg overflow-hidden mb-4">
+            <Map 
+              title="Casa 1 - La Plata"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3274.336902837547!2d-57.95280932367647!3d-34.91870837378003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e62cb43f1c4f%3A0xf4da751b4a1cb43!2sC.%206%201168%2C%20B1900%20La%20Plata%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1700000000000"
+              width="100%"
+              height="200"
+            />
+          </div>
+        </div>
+        </a>
+      </article>
 
-    <!-- CASA 1 -->
-    <article class="bg-white rounded-xl shadow-md p-6">
-      <h2 class="text-xl font-bold mb-2">CASA 1</h2>
-      <p class="text-gray-700 mb-4">Ubicada en calle 6 nro. 1168 entre 56 y 57</p>
+      <!-- Casa 2 -->
+      <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+           <a href="/residencias/casas-la-plata">
+        <div class="relative h-48">
+          <img 
+            src="/placeholder.svg?height=300&width=400" 
+            alt="Casa 2"
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute top-3 right-3 bg-white px-3 py-1 rounded-full text-sm font-semibold text-gray-900">
+            Casa 2
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Calle 4 nro. 524</h3>
+          <p class="text-gray-600 mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            Prolongación 61, Berisso
+          </p>
+          <div class="rounded-lg overflow-hidden mb-4">
+            <Map 
+              title="Casa 2 - Berisso"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3274.676083874409!2d-57.88360222367701!3d-34.909874173777986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e6fbca3ad3cf%3A0x8bb6a4e0055e1c25!2sC.%204%20524%2C%20Berisso%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1700000000001"
+              width="100%"
+              height="200"
+            />
+          </div>
+        </div>
+        </a>
+      </article>
 
-      <Map 
-        title=""
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3274.336902837547!2d-57.95280932367647!3d-34.91870837378003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e62cb43f1c4f%3A0xf4da751b4a1cb43!2sC.%206%201168%2C%20B1900%20La%20Plata%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1700000000000"
-        width="100%"
-        height="250"
-      />
-    </article>
+      <!-- Casa 3 -->
+      <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+           <a href="/residencias/casas-la-plata">
+        <div class="relative h-48">
+          <img 
+            src="/placeholder.svg?height=300&width=400" 
+            alt="Casa 3"
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute top-3 right-3 bg-white px-3 py-1 rounded-full text-sm font-semibold text-gray-900">
+            Casa 3
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Calle 5</h3>
+          <p class="text-gray-600 mb-4 flex items-center gap-2">
+            <svg class="w-5 h-5 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            Entre 69 y 70, La Plata
+          </p>
+          <div class="rounded-lg overflow-hidden mb-4">
+            <Map 
+              title="Casa 3 - La Plata"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3275.0253493927714!2d-57.95740292367748!3d-34.90074227377453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e62ff76d5259%3A0x8bdb12c90e5d7d21!2sC.%205%2070%2C%20B1904%20La%20Plata%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1700000000002"
+              width="100%"
+              height="200"
+            />
+          </div>
+        </div>
+        </a>
+      </article>
 
-    <!-- CASA 2 -->
-    <article class="bg-white rounded-xl shadow-md p-6">
-      <h2 class="text-xl font-bold mb-2">CASA 2</h2>
-      <p class="text-gray-700 mb-4">Ubicada en calle 4 nro. 524 prolongación 61 (Berisso)</p>
-
-      <Map 
-        title=""
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3274.676083874409!2d-57.88360222367701!3d-34.909874173777986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e6fbca3ad3cf%3A0x8bb6a4e0055e1c25!2sC.%204%20524%2C%20Berisso%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1700000000001"
-        width="100%"
-        height="250"
-      />
-    </article>
-
-    <!-- CASA 3 -->
-    <article class="bg-white rounded-xl shadow-md p-6">
-      <h2 class="text-xl font-bold mb-2">CASA 3</h2>
-      <p class="text-gray-700 mb-4">Ubicada en calle 5 entre 69 y 70</p>
-
-      <Map 
-        title=""
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3275.0253493927714!2d-57.95740292367748!3d-34.90074227377453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e62ff76d5259%3A0x8bdb12c90e5d7d21!2sC.%205%2070%2C%20B1904%20La%20Plata%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1700000000002"
-        width="100%"
-        height="250"
-      />
-    </article>
-
+    </div>
   </section>
 </BaseLayout>

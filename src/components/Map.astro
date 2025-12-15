@@ -2,11 +2,16 @@
 const {
   title = "Dirección:",
   src,
-  width = "600",
-  height = "450",
+  aspect = "16/9", // 16/9, 4/3, square
   fullHeight = false,
-  centered = false,
+  allowFullscreen = true,
 } = Astro.props;
+
+const aspectClass = {
+  "16/9": "aspect-video",
+  "4/3": "aspect-[4/3]",
+  "square": "aspect-square",
+}[aspect] || "aspect-video";
 ---
 
 <section class="mb-10 text-center">
@@ -14,22 +19,13 @@ const {
     <h3 class="text-2xl text-gray-800 font-bold mb-4">{title}</h3>
   )}
 
-  <div
-    class={[
-      "flex justify-center",
-      centered ? "items-center" : "",
-      fullHeight ? "h-screen" : ""
-    ].join(" ")}
-  >
+  <div class={`relative w-full ${fullHeight ? "h-screen" : aspectClass}`}>
     <iframe
       src={src}
-      width={width}
-      height={height}
-      style="border:0;"
-      allowfullscreen=""
+      class="absolute inset-0 w-full h-full rounded-lg shadow-md"
+      style="border:0"
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
-      class="rounded-lg shadow-md"
     ></iframe>
   </div>
 </section>

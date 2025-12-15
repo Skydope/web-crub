@@ -1,0 +1,316 @@
+---
+import Banner from '../../components/Banner.astro'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Map from '../../components/Map.astro'
+---
+
+<BaseLayout
+  title="Casas en Azul"
+  description="Casas estudiantiles en Azul para estudiantes del CRUB que cursan en UNICEN"
+>
+  <Banner
+    title="Casas en Azul"
+    description="Alojamiento para estudiantes bolivarenses que cursan en el Campus Universitario de la UNICEN"
+    showButton={false}
+    heightClass="py-20"
+    gradient="from-blue-900 to-blue-700"
+  />
+
+  <!-- Hero Section con información principal -->
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+      <div class="grid md:grid-cols-2 gap-0">
+        <!-- Imagen principal -->
+        <div class="relative h-80 md:h-auto">
+          <img 
+            src="/placeholder.svg?height=600&width=800" 
+            alt="Residencia Azul"
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute top-4 left-4 bg-blue-900 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+            Complejo de 3 Casas
+          </div>
+        </div>
+        
+        <!-- Info principal -->
+        <div class="p-8 md:p-12 flex flex-col justify-center">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Vivir en el Campus Universitario
+          </h2>
+          <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+            Tres viviendas conveniadas entre la Municipalidad de Bolívar y el Campus Universitario de la Facultad de Cs. Agronómicas de la UNICEN, destinadas a estudiantes de Bolívar que cursan mencionada carrera en Azul.
+          </p>
+          
+          <!-- Características destacadas -->
+          <div class="grid grid-cols-2 gap-4 mb-6">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm text-gray-600">Total</p>
+                <p class="font-semibold text-gray-900">3 Casas</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm text-gray-600">Ubicación</p>
+                <p class="font-semibold text-gray-900">Campus UNICEN</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm text-gray-600">Carreras</p>
+                <p class="font-semibold text-gray-900">Cs. Agronómicas</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm text-gray-600">Convenio</p>
+                <p class="font-semibold text-gray-900">Municipal</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="/contacto" class="inline-flex items-center justify-center gap-2 bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition-all duration-300 transform hover:scale-105 shadow-lg">
+            Solicitar información
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galería de imágenes -->
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8">Galería de imágenes</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="col-span-2 row-span-2 relative group overflow-hidden rounded-xl shadow-lg cursor-pointer">
+        <img 
+          src="/placeholder.svg?height=600&width=600" 
+          alt="Vista del complejo"
+          class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div class="absolute bottom-4 left-4 text-white">
+            <p class="font-semibold text-lg">Vista del complejo</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="relative group overflow-hidden rounded-xl shadow-lg cursor-pointer">
+        <img 
+          src="/placeholder.svg?height=300&width=300" 
+          alt="Habitaciones"
+          class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div class="absolute bottom-2 left-2 text-white">
+            <p class="font-semibold">Habitaciones</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="relative group overflow-hidden rounded-xl shadow-lg cursor-pointer">
+        <img 
+          src="/placeholder.svg?height=300&width=300" 
+          alt="Cocina comedor"
+          class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div class="absolute bottom-2 left-2 text-white">
+            <p class="font-semibold">Cocina</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="relative group overflow-hidden rounded-xl shadow-lg cursor-pointer">
+        <img 
+          src="/placeholder.svg?height=300&width=300" 
+          alt="Áreas comunes campus"
+          class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div class="absolute bottom-2 left-2 text-white">
+            <p class="font-semibold">Campus</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="relative group overflow-hidden rounded-xl shadow-lg cursor-pointer">
+        <img 
+          src="/placeholder.svg?height=300&width=300" 
+          alt="Área de estudio"
+          class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div class="absolute bottom-2 left-2 text-white">
+            <p class="font-semibold">Estudio</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ventajas del Campus -->
+  <section class="bg-gray-50 py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4 text-center">Ventajas de vivir en el campus</h2>
+      <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+        Estar dentro del campus universitario ofrece beneficios únicos para tu vida estudiantil
+      </p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300">
+          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-7 h-7 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Cerca de todo</h3>
+          <p class="text-gray-600">Aulas, bibliotecas y laboratorios a minutos caminando</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300">
+          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-7 h-7 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Comunidad estudiantil</h3>
+          <p class="text-gray-600">Convivencia con otros estudiantes y actividades</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300">
+          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-7 h-7 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Ahorro de tiempo</h3>
+          <p class="text-gray-600">Sin viajes largos, más tiempo para estudiar</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300">
+          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-7 h-7 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Internet y servicios</h3>
+          <p class="text-gray-600">Conectividad de alta velocidad incluida</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300">
+          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-7 h-7 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Seguridad</h3>
+          <p class="text-gray-600">Campus con vigilancia y acceso controlado</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow duration-300">
+          <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-7 h-7 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Cocinas equipadas</h3>
+          <p class="text-gray-600">Espacios completos para preparar tus comidas</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ubicación -->
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8">Ubicación en el campus</h2>
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+      <div class="grid md:grid-cols-2 gap-0">
+        <!-- Mapa -->
+        <div class="h-96 md:h-auto mx-3">
+          <Map 
+            title="Complejo de Casas - Campus UNICEN Azul"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3196.161505952354!2d-59.8819988235907!3d-36.766692810941315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959427b7345a13e5%3A0xa1e12dff6b7178eb!2sAv.%20Rep%C3%BAblica%20de%20Italia%20%26%20Av.%20Manuel%20Chaves%2C%20B7300%20Azul%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1764869167832!5m2!1ses-419!2sar"
+            
+          />
+        </div>
+        
+        <!-- Info de ubicación -->
+        <div class="p-8 md:p-12 flex flex-col justify-center">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">
+            Campus Universitario UNICEN
+          </h3>
+          <p class="text-gray-700 mb-6 leading-relaxed">
+            Las tres casas están ubicadas dentro del campus universitario, en Av. República de Italia y Av. Manuel Chávez, Azul, Provincia de Buenos Aires.
+          </p>
+          
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <svg class="w-5 h-5 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">Dirección</h4>
+                <p class="text-gray-600">Av. República de Italia y Av. Manuel Chávez<br/>Azul (7300), Buenos Aires</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <svg class="w-5 h-5 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">Facultad</h4>
+                <p class="text-gray-600">Facultad de Ciencias Agronómicas<br/>Universidad Nacional del Centro (UNICEN)</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <svg class="w-5 h-5 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">Disponibilidad</h4>
+                <p class="text-gray-600">Durante el año académico<br/>Exclusivo para estudiantes de Bolívar</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+</BaseLayout>
