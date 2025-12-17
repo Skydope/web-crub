@@ -3,7 +3,7 @@ titulo: "TUVO LUGAR UNA NUEVA EDICIÓN DE EXPO BOLÍVAR EDUCA 2025 EN EL CRUB"
 descripcion: "Este jueves, se llevó a cabo una nueva edición de Expo Bolívar Educa en las instalaciones del Centro Regional Universitario de Bolívar (CRUB), con una gran convocatoria de instituciones educativas, docentes y estudiantes de distintos niveles."
 categoria: "Expo"
 fecha: 11-11-2025
-imagen: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=250&fit=crop"
+imagen: "/img/fotos-noticias/imagen13.jpg"
 ---
 
 

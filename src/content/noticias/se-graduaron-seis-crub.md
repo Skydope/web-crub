@@ -3,7 +3,7 @@ titulo: "SE GRADUARON SEIS NUEVOS PROFESIONALES EN EL CRUB DE BOLÍVAR"
 descripcion: "Este jueves, el Centro Regional Universitario de Bolívar fue sede de una jornada muy emocionante para los seis estudiantes de Abogacía que dieron su última materia, culminando sus estudios de grado."
 categoria: "Internacional"
 fecha: "11-07-2025"
-imagen: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=250&fit=crop"
+imagen: "/img/fotos-noticias/imagen9.jpg"
 ---
 
 Este jueves, el Centro Regional Universitario de Bolívar fue sede de una jornada muy emocionante para los seis estudiantes de Abogacía que dieron su última materia, culminando sus estudios de grado.

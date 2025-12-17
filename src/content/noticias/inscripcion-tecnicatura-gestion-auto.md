@@ -3,7 +3,7 @@ titulo: "SE ENCUENTRA ABIERTA LA INSCRIPCIÓN A LA TECNICATURA UNIVERSITARIA EN 
 descripcion: "Tecnicatura Universitaria en Automatización y Control"
 categoria: "Académico"
 fecha: 27-12-2024
-imagen: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=250&fit=crop"
+imagen: "/img/fotos-noticias/imagen1.jpg"
 ---
 
 Este viernes, la gestión municipal anunció que se encuentra abierta la inscripción a la Tecnicatura Universitaria en Automatización y Control, una nueva propuesta académica que llega al CRUB a través del Programa Puentes.

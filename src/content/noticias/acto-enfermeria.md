@@ -3,7 +3,7 @@ titulo: "ACTO DE APERTURA DE LA TECNICATURA SUPERIOR EN ENFERMERÍA"
 descripcion: "El acto contó con la presencia del intendente Marcos Pisano; la secretaria de Salud, Cecilia Luna; la directora de Innovación y Políticas Educativas, Luciana Romano; la coordinadora de la carrera, Karina Peret; autoridades educativas y profesionales de la salud. También participaron estudiantes de las cohortes 2023, 2024 y los ingresantes 2025."
 categoria: "Actos"
 fecha: 15-04-2025
-imagen: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=250&fit=crop"
+imagen: "/img/fotos-noticias/imagen6.jpg"
 ---
 
 Con un encuentro en las instalaciones del Centro Regional Universitario de Bolívar (CRUB), se dio inicio al ciclo lectivo 2025 de la Tecnicatura Superior en Enfermería, perteneciente a la Escuela Floreal Ferrara del Ministerio de Salud de la Provincia de Buenos Aires.
