@@ -7,7 +7,7 @@ const noticiasCollection = defineCollection({
     descripcion: z.string(),
     categoria: z.string(),
     fecha: z.string(),
-    imagen: z.string().url(),
+    imagen: z.string()
   }),
 });
 

@@ -3,7 +3,7 @@ titulo: "ENCUENTRO ENTRE EDUCACIÓN Y EL SECTOR PRODUCTIVO"
 descripcion: "CONSTRUYENDO UNA AGENDA DE VINCULACIÓN TERRITORIAL"
 categoria: "Académico"
 fecha: 15-04-2025
-imagen: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=250&fit=crop"
+imagen: "/img/fotos-noticias/imagen5.jpg"
 ---
 
 En el marco del Programa Puentes  y por inicitiva de la Dirección de Innovación y Políticas Educativas a cargo de Luciana Romano, y la Dirección de Asuntos Agrarios encabezada por Mariano Sarraúa, se realizó en Bolívar un importante encuentro entre la Universidad y el Sector Productivo, con el objetivo de fortalecer la articulación entre la educación superior y las demandas del entramado productivo local.
