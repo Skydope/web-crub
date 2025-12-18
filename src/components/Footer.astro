@@ -7,18 +7,28 @@
     <div
       class="border-t border-white mt-6 pt-6 text-center text-blue-200 text-sm"
     ></div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-3  gap-8">
+      
+      <!--Logos de instituciones -->
+
       <div>
-        
-        <h3 class="font-semibold mb-3">CRUB</h3><p
-          class="text-blue-200 text-sm"
-        >
-          Centro Regional Universitario Bolívar
-        </p>
-        <a href="https://www.bolivar.gob.ar/" target="_blank" rel="noopener noreferrer">
-        <img src="/svg/logo-muni.svg" alt="" class="h-32 w-auto">
+        <!--Logo CRUB -->
+        <a href="/"  rel="noopener noreferrer">
+        <img src="/svg/footer-logo.svg" alt="" class="md:h-20 lg:h-16 w-auto">
         </a>
-      </div><div>
+        
+        <!--Logo Educación -->
+        <a href="/" target="_blank" rel="noopener noreferrer">
+        <img src="/svg/logo-edu.svg" alt="" class="md:h-20 lg:h-16 w-auto">
+        </a>
+        
+
+        <!--Logo Municipalidad -->
+        <a href="https://www.bolivar.gob.ar/" target="_blank" rel="noopener noreferrer">
+        <img src="/svg/logo-muni.svg" alt="" class="md:h-20 lg:h-16 w-auto">
+        </a>
+      </div>
+      <div class="justify-items-center">
         <h4 class="font-semibold mb-3">Contacto</h4><ul
           class="space-y-2 text-blue-200 text-sm"
         >
@@ -82,22 +92,23 @@
               class="hover:text-white transition-colors">info@crub.edu.ar</a>
           </li>
         </ul>
-      </div><div>
+      </div><div class="justify-items-center">
         <h4 class="font-semibold mb-3">Enlaces</h4><ul
           class="space-y-2 text-blue-200 text-sm"
         >
           <li>
-            <button class="hover:text-white transition-colors"
-              >Institución</button>
+            <a href="/institucional/historia" rel="noopener noferrer" class="hover:text-white transition-colors"
+              >Institución</a>
           </li><li>
-            <button class="hover:text-white transition-colors"
-              >Oferta Académica</button>
-          </li><li>
-            <button class="hover:text-white transition-colors"
-              >Extensión</button>
-          </li><li>
-            <button class="hover:text-white transition-colors"
-              >Proyectos</button>
+            <a href="/oferta" rel="noopener noferrer" class="hover:text-white transition-colors"
+              >Oferta Académica</a>
+          </li><li> 
+            <a href="/extension" rel="noopener noferrer" class="hover:text-white transition-colors"
+              >Extensión</a>
+          </li>
+          <li> 
+            <a href="/contacto" rel="noopener noferrer" class="hover:text-white transition-colors"
+              >Contacto</a>
           </li>
         </ul>
       </div>
