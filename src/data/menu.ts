@@ -19,7 +19,7 @@ const menuItems: SeccionMenu[] = [
         ],
     },
     {
-        nombre: "Propuesta Académica",
+        nombre: "Oferta Académica",
         url: "/propuestas",
         subcategorias: [
             { nombre: "Grado", url: "/propuestas/grado" },
@@ -28,7 +28,7 @@ const menuItems: SeccionMenu[] = [
         ],
     },
     {
-        nombre: "Casas Estudiantiles",
+        nombre: "Residencias Estudiantiles",
         url: "/residencias",
         subcategorias: [
             { nombre: "Casas en Azul", url: "/residencias/residencia-azul" },
@@ -41,6 +41,13 @@ const menuItems: SeccionMenu[] = [
         subcategorias: [
             { nombre: "Arte, historia y cultura: territorios y prácticas en la Provincia de Buenos Aires", url: "/extension-crub/arte" },
             { nombre: "Actualización para la Justicia de Paz Bonaerense", url: "/extension-crub/bonaerense" },
+        ],
+    },
+     {
+        nombre: "Programas",
+        url: "/propuestas",
+        subcategorias: [
+            { nombre: "Proyecto preparatoria", url: "/propuestas/grado" },
         ],
     },
 
