@@ -43,7 +43,7 @@ const menuItems: SeccionMenu[] = [
         url: "/casas-estudiantiles",
         subcategorias: [
             { nombre: "Casas en Azul", url: "/casas-estudiantiles/casa-azul" },
-            { nombre: "Casas en La Plata", url: "/casas-estudiantiles/casa-la-plata" },
+            { nombre: "Casas en La Plata", url: "/casas-estudiantiles/casas-la-plata" },
         ],
     },
     {
