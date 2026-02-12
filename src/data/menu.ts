@@ -26,9 +26,8 @@ const menuItems: SeccionMenu[] = [
         url: "/enseñanza-categoria",
         subcategorias: [
             { nombre: "Diplomaturas", url: "/enseñanza-categoria/diplomaturas" },
-            { nombre: "Tecnicaturas", url: "/enseñanza-categoria/tecnicaturas" },
-            { nombre: "Licenciaturas", url: "/enseñanza-categoria/licenciaturas" },
-            { nombre: "Ingenierías", url: "/enseñanza-categoria/ingenierias" },
+            { nombre: "Grado", url: "/enseñanza-categoria/grado" },
+            { nombre: "Pregrado", url: "/enseñanza-categoria/pregrado" },
         ],
     },
     {

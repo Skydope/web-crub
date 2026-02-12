@@ -1,66 +1,62 @@
 ---
-import Layout from "../../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-import Banner from "../../components/Banner.astro";
+import Layout from '../../layouts/BaseLayout.astro'
+import { getCollection } from 'astro:content'
+import Banner from '../../components/Banner.astro'
 
 // 1) Generamos las rutas estáticas
 export async function getStaticPaths() {
   // Carpetas válidas dentro de content/propuestas
-  const categorias = ["grado", "pregrado", "diplomaturas"];
+  const categorias = ['grado', 'pregrado', 'diplomaturas']
 
   return categorias.map((categoria) => ({
     params: { categoria },
-  }));
+  }))
 }
 
 // 2) Obtenemos el parámetro de la URL
-const { categoria } = Astro.params;
+const { categoria } = Astro.params
 
 // 3) Obtenemos todas las propuestas
-const propuestas = await getCollection("propuestas");
+const enseñanza = await getCollection('enseñanza')
 
 // 4) Filtramos por subcarpeta (primer parte del id)
-const propuestasFiltradas = propuestas.filter((p) => {
-  const carpeta = p.id.split("/")[0];
-  return carpeta === categoria;
-});
+const propuestasFiltradas = enseñanza.filter((p) => {
+  const carpeta = p.id.split('/')[0]
+  return carpeta === categoria
+})
 
 const titulos = {
-  grado: "Carreras de Grado",
-  pregrado: "Carreras de Pregrado",
-  diplomaturas: "Diplomaturas y Cursos"
-};
+  grado: 'Carreras de Grado',
+  pregrado: 'Carreras de Pregrado',
+  diplomaturas: 'Diplomaturas y Cursos',
+}
 
-const tituloBanner = titulos[categoria] ?? "Propuestas académicas";
+const tituloBanner = titulos[categoria as keyof typeof titulos] ?? 'enseñanza'
 ---
 
-
 <Layout>
-<Banner
-  title={tituloBanner}
-  description=""
-  showButton={false}
-/>
+  <Banner title={tituloBanner} description="" showButton={false} />
 
-<section class="max-w-5xl mx-auto py-20 min-h-[70vh]">
-
-
+  <section class="max-w-5xl mx-auto py-20 min-h-[70vh]">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {propuestasFiltradas.map((p) => (
-        <a href={`/propuestas/${categoria}/${p.slug.split("/").pop()}`}>
-        <article class="p-4 bg-white rounded-lg shadow-md">
-          <img 
-            src={`/img/logos-universidades/${p.data.img}.jpg`} alt={p.data.universidad} 
-            class="w-[293px] h-[149px] object-cover rounded"
-            />
-          <h2 class="text-xl font-semibold">{p.data.titulo}</h2>
-          <p class="text-sm text-gray-600">{p.data.universidad}</p>
-          <p class="text-sm">{p.data.duracion}</p>
-          <p class="text-sm">{p.data.modalidad}</p>
-          <p class="text-sm">{p.data.financiamiento}</p>
-        </article>
-        </a>
-      ))}
+      {
+        propuestasFiltradas.map((p) => (
+          <a href={`/propuesta/${categoria}/${p.id.split('/').pop()}`}>
+            <article class="p-4 bg-white rounded-lg shadow-md">
+              <img
+                src={`/img/logos-universidades/${p.data.img}.jpg`}
+                alt={p.data.universidad}
+                class="w-[293px] h-[149px] object-cover rounded"
+              />
+              <h2 class="text-xl font-semibold">{p.data.titulo}</h2>
+              <p class="text-sm text-gray-600">{p.data.universidad}</p>
+              <p class="text-sm">{p.data.duracion}</p>
+              <p class="text-sm">{p.data.modalidad}</p>
+              <p class="text-sm">{p.data.financiamiento}</p>
+            </article>
+          </a>
+        ))
+      }
     </div>
   </section>
 </Layout>
