@@ -1,5 +1,5 @@
 ---
-titulo: "TECNICATURA EN ENFERMERÍA"
+titulo: "TECNICATURA EN ENFERMERIA"
 categoria: "tecnicatura"
 nivel: "pregrado"
 universidad: "Escuela de Gobierno Floreal Ferrara"
@@ -8,6 +8,8 @@ duracion: "3 años"
 modalidad: "Presencial"
 financiamiento: "Municipalidad de Bolívar"
 url: "tecnicatura-enfermeria"
+cohorte: "2023 Y 2024"
+practicas: "Articulacion institucional para practicas: Secretaria de Salud"
 ---
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam posuere, turpis nec accumsan ultricies, mi metus venenatis ligula, quis malesuada libero lectus vitae nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam sit amet aliquet arcu. Sed vulputate est lectus, sed vehicula ante gravida vitae. Donec vitae porta lectus. Etiam condimentum nisi consequat facilisis fermentum. Fusce quis urna scelerisque, feugiat metus nec, feugiat diam. Quisque velit quam, maximus non risus eu, fringilla molestie libero. Nunc non augue at lacus faucibus malesuada. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec a sem quis sapien suscipit varius. Sed ultricies ullamcorper lorem, sit amet tristique metus suscipit a. Curabitur sit amet cursus tellus. Praesent id lorem efficitur, dapibus lectus ut, convallis lectus. Morbi dapibus pellentesque nisi, eu imperdiet tortor fermentum a.
 

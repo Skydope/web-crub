@@ -7,6 +7,10 @@ export interface SeccionMenu {
     nombre: string;
     url: string;
     subcategorias?: Subcategoria[];
+    nivel?: string;
+    enlaceBase?: string;
+    carreras?: { nombre: string; slug: string; url: string; }[];
+
 }
 
 const menuItems: SeccionMenu[] = [
@@ -15,24 +19,32 @@ const menuItems: SeccionMenu[] = [
         url: "/institucional",
         subcategorias: [
             { nombre: "Historia", url: "/institucional/historia" },
-            { nombre:"Contacto", url: "/contacto" },
         ],
     },
     {
-        nombre: "Oferta Académica",
-        url: "/propuestas",
+        nombre: "Enseñanza",
+        url: "/enseñanza-categoria",
         subcategorias: [
-            { nombre: "Grado", url: "/propuestas/grado" },
-            { nombre: "Pregrado", url: "/propuestas/pregrado" },
-            { nombre: "Diplomaturas", url: "/propuestas/diplomaturas" },
+            { nombre: "Diplomaturas", url: "/enseñanza-categoria/diplomaturas" },
+            { nombre: "Tecnicaturas", url: "/enseñanza-categoria/tecnicaturas" },
+            { nombre: "Licenciaturas", url: "/enseñanza-categoria/licenciaturas" },
+            { nombre: "Ingenierías", url: "/enseñanza-categoria/ingenierias" },
         ],
     },
     {
-        nombre: "Residencias Estudiantiles",
-        url: "/residencias",
+        nombre: "Proyectos",
+        url: "/proyectos",
         subcategorias: [
-            { nombre: "Casas en Azul", url: "/residencias/residencia-azul" },
-            { nombre: "Casas en La Plata", url: "/residencias/residencia-la-plata" },
+            { nombre: "Proyecto Preparatoria", url: "/proyectos/preparatoria" },
+            { nombre: "Expo-Bolivar Educa", url: "/proyectos/expo-Bolivar-educa" },
+        ],
+    },
+    {
+        nombre: "Casas Estudiantiles",
+        url: "/casas-estudiantiles",
+        subcategorias: [
+            { nombre: "Casas en Azul", url: "/casas-estudiantiles/casa-azul" },
+            { nombre: "Casas en La Plata", url: "/casas-estudiantiles/casa-la-plata" },
         ],
     },
     {
@@ -40,17 +52,11 @@ const menuItems: SeccionMenu[] = [
         url: "/extension-crub",
         subcategorias: [
             { nombre: "Arte, historia y cultura: territorios y prácticas en la Provincia de Buenos Aires", url: "/extension-crub/arte" },
-            { nombre: "Actualización para la Justicia de Paz Bonaerense", url: "/extension-crub/bonaerense" },
+            { nombre: "Actualización para la Justicia de Paz Bonaerense", url: "/extension-crub/justicia" },
+            { nombre: "Curso para emprendedores", url: "/extension-crub/emprendedores" },
         ],
     },
-     {
-        nombre: "Programas",
-        url: "/propuestas",
-        subcategorias: [
-            { nombre: "Proyecto preparatoria", url: "/propuestas/grado" },
-        ],
-    },
-
 ];
+
 
 export default menuItems;
