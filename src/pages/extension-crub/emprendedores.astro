@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Banner from '../../components/Banner.astro'
+---
+
+<BaseLayout title="Extension" description=".">
+    <Banner
+        title="Extensión"
+        description="Curso para emprendedores: herramientas para el desarrollo de proyectos productivos."
+        showButton={false}
+    />
+    <section>
+        <h2 class="titulo">Cursos del Foro de la Justicia de Paz.</h2>
+        <p class="font-cuerpo text-xl p-2 text-gray-700 leading-relaxed">
+            Destinado a la capacitación de integrantes de la Red de
+            Emprendedores y otros interesados en el desarrollo de ideas de
+            negocio y gestión empresarial. Dictado por la Facultad de Ingeniería
+            de la Universidad Nacional del Centro de la Provincia de Buenos
+            Aires (UNICEN).
+        </p>
+        <p class="font-cuerpo text-xl p-2 text-gray-700 leading-relaxed">
+            El curso financiado por la Municipalidad de Bolívar se llevó a cabo
+            en 8 encuentros en el año 2024 y se replicó en 2025. Seis
+            encuentros.
+        </p>
+    </section>
+</BaseLayout>
