@@ -1,20 +1,14 @@
 ---
-import Banner from '../components/Banner.astro';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import TodasNoticias from '../components/TodasNoticias.astro'; 
+import Banner from '../components/Banner.astro'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import TodasNoticias from '../components/TodasNoticias.astro'
 ---
-<BaseLayout title="Inscripciones" description="Página de inscripciones en la que se muestra la información de las cursadas abiertas en el CRUB.">
-    
-<Banner
+
+<BaseLayout
   title="Noticias"
-  description=""
-  showButton={false}
-/>
+  description="Página de noticias que tienen que ver con el Centro Regional Universitario Bolívar."
+>
+  <Banner title="Noticias" description="" showButton={false} />
 
-    
-<TodasNoticias />
-
-
-
-  
+  <TodasNoticias />
 </BaseLayout>

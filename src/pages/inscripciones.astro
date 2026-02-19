@@ -1,19 +1,16 @@
 ---
-import Banner from '../components/Banner.astro';
-import Noticias from '../components/Noticias.astro';
-import BaseLayout from '../layouts/BaseLayout.astro'; 
+import Banner from '../components/Banner.astro'
+import Noticias from '../components/Noticias.astro'
+import BaseLayout from '../layouts/BaseLayout.astro'
 ---
-<BaseLayout title="Inscripciones" description="Página de inscripciones en la que se muestra la información de las cursadas abiertas en el CRUB.">
-    
-<Banner
+
+<BaseLayout
   title="Inscripciones"
-  description="Inscripciones abiertas de 2026."
-  showButton={false}
-/>
-
-    
-
-
-
-  
+  description="Página de inscripciones en la que se muestra la información de las cursadas abiertas en el CRUB."
+>
+  <Banner
+    title="Inscripciones"
+    description="Inscripciones abiertas de 2026."
+    showButton={false}
+  />
 </BaseLayout>

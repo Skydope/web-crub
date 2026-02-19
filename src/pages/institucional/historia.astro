@@ -7,16 +7,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
     title="Historia"
     description="Página donde se muestra la historia de la Institución a través de los años."
 >
-<Banner
-  title="Nuestra Historia"
-  description="Formando profesionales desde 1997"
-  showButton={false}
-/>
+    <Banner
+        title="Nuestra Historia"
+        description="Formando profesionales desde 1997"
+        showButton={false}
+    />
     <div class="sm:p-6 lg:p-8 bg-white shadow-xl rounded-lg">
         <h1
             class="font-encabezado text-4xl sm:text-5xl font-bold p-4 bg-institucional-azul-700 text-white mb-8 rounded-t-lg"
         >
-          El CRUB a través de los años.
+            El CRUB a través de los años.
         </h1>
 
         <section class="origen mb-12 p-6 bg-gray-50 rounded-lg">
@@ -26,19 +26,68 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
                 Los comienzos de la institución
             </h2>
             <p class="font-cuerpo text-lg text-gray-700 leading-relaxed">
-                El Centro Regional Universitario de Bolívar (CRUB), se inauguró
-                en septiembre de 1997. Fue concebido como un proyecto para
-                brindar oportunidades de desarrollo profesional y estudio a los
-                jóvenes de la ciudad de Bolívar y la región, y es una de las
-                obras educativas más importantes de la localidad. Abarca una
-                superficie cubierta de 1.800 metros cuadrados, cuenta con un
-                área pedagógica compuesta por 7 aulas, grupo de sanitarios que
-                incluye uno para alumnos con necesidades especiales. Además, un
-                área de gestión y administración (Dirección, sala de
-                profesores), área de actividades complementarias (sala de
-                informática, biblioteca, laboratorio) y área recreativa (SUM,
-                sanitarios para personas con discapacidad, sala de máquinas).
+                El Centro Regional Universitario de Bolívar (CRUB) es una
+                institución pública ubicada en el Municipio de Bolívar con el
+                objetivo de garantizar el acceso a la educación superior y
+                promover la igualdad de oportunidades en el territorio. Con más
+                de 20 años de trayectoria, el CRUB permite que estudiantes de
+                Bolívar y la región puedan cursar estudios universitarios sin
+                necesidad de migrar, fortaleciendo el arraigo y el desarrollo
+                local.
             </p>
+            <p class="font-cuerpo text-lg text-gray-700 leading-relaxed">
+                A través de la articulación con universidades e instituciones de
+                educación superior, el CRUB impulsa una oferta académica
+                vinculada a las necesidades sociales, productivas y culturales
+                del distrito, favoreciendo la formación de profesionales
+                comprometidos con su comunidad. Su sede, ubicada en el centro de
+                la Provincia de Buenos Aires, consolida a la educación superior
+                como una herramienta estratégica para el crecimiento y la
+                transformación del territorio.
+            </p>
+            <br />
+            <h3
+                class="font-encabezado text-2xl sm:text-2xl font-semibold mb-3 text-gray-800"
+            >
+                Misión
+            </h3>
+            <p class="font-cuerpo text-lg text-gray-700 leading-relaxed">
+                Garantizar el acceso a la educación superior con criterios de
+                equidad e inclusión territorial, promoviendo la formación
+                universitaria como motor del desarrollo social, productivo y
+                cultural del partido de Bolívar.
+            </p>
+        </section>
+
+        <section class="origen mb-12 p-6 bg-gray-50 rounded-lg">
+            <h3
+                class="font-encabezado text-2xl sm:text-2xl font-semibold mb-3 text-gray-800"
+            >
+                Objetivos
+            </h3>
+            <li
+                class="list-none font-cuerpo text-lg text-gray-700 leading-relaxed"
+            >
+                <ul>
+                    Ampliar y fortalecer el acceso a la educación superior para
+                    estudiantes del distrito y la región.
+                </ul>
+                <ul>
+                    Desarrollar una oferta académica pertinente y de calidad, en
+                    articulación con universidades e instituciones de educación
+                    superior, acorde a las necesidades del territorio.
+                </ul>
+                <ul>
+                    Acompañar las trayectorias educativas, favoreciendo la
+                    permanencia y el egreso de los estudiantes.
+                </ul>
+                <ul>
+                    Promover la articulación con el sistema educativo, el sector
+                    socio-productivo y la comunidad, consolidando a la educación
+                    superior como herramienta estratégica para el desarrollo
+                    local.
+                </ul>
+            </li>
         </section>
 
         <section class="linea-tiempo mb-12 p-6 bg-gray-50 rounded-lg">
@@ -62,8 +111,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
                         >Orígenes.</strong
                     >
                     <span class="font-cuerpo text-gray-700"
-                        >En 1997 el Centro Regional Universitario de Bolívar (CRUB)inicia sus actividades en 
-                        las instalaciones de la Sociedad Italiana de Bolívar con la firma de un convenio 
+                        >En 1997 el Centro Regional Universitario de Bolívar
+                        (CRUB)inicia sus actividades en las instalaciones de la
+                        Sociedad Italiana de Bolívar con la firma de un convenio
                         con la Universidad Nacional de La Plata..</span
                     >
                 </li>
@@ -79,10 +129,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
                         >Nueva sede.</strong
                     >
                     <span class="font-cuerpo text-gray-700"
-                        >En el año 2017 quedó formalmente inaugurado 
-                        el edificio del Centro Regional Universitario,
-                         ubicado en la avenida Cacique Coliqueo. </span
-                    >
+                        >En el año 2017 quedó formalmente inaugurado el edificio
+                        del Centro Regional Universitario, ubicado en la avenida
+                        Cacique Coliqueo.
+                    </span>
                 </li>
 
                 <li class="relative">
@@ -96,12 +146,16 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
                         >Programa Puentes.</strong
                     >
                     <span class="font-cuerpo text-gray-700"
-                        >A partir de Puentes, se incrementan las oportunidades de acceso a la educación superior mediante
-                         la extensión de la cobertura territorial en 82 municipios del interior bonaerense.
-                          Alcanza a 25 universidades con asiento en la Provincia y beneficia directamente a
-                           200 mil habitantes que viven a más de 50 kilómetros de una sede universitaria.
-                            La adhesión al Programa Puentes de la Provincia de Buenos Aires
-                         marcó un punto de inflexión, consolidando y profundizando la iniciativa municipal.</span
+                        >A partir de Puentes, se incrementan las oportunidades
+                        de acceso a la educación superior mediante la extensión
+                        de la cobertura territorial en 82 municipios del
+                        interior bonaerense. Alcanza a 25 universidades con
+                        asiento en la Provincia y beneficia directamente a 200
+                        mil habitantes que viven a más de 50 kilómetros de una
+                        sede universitaria. La adhesión al Programa Puentes de
+                        la Provincia de Buenos Aires marcó un punto de
+                        inflexión, consolidando y profundizando la iniciativa
+                        municipal.</span
                     >
                 </li>
             </ul>
