@@ -19,7 +19,7 @@ const menuItems: SeccionMenu[] = [
         ],
     },
     {
-        nombre: "Oferta Académica",
+        nombre: "Enseñanza",
         url: "/propuestas",
         subcategorias: [
             { nombre: "Grado", url: "/propuestas/grado" },
