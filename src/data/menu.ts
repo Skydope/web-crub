@@ -33,6 +33,7 @@ const menuItems: SeccionMenu[] = [
         subcategorias: [
             { nombre: "Arte, historia y cultura: territorios y prácticas en la Provincia de Buenos Aires", url: "/extension" },
             { nombre: "Actualización para la Justicia de Paz Bonaerense", url: "/extension" },
+            { nombre: "Curso para Emprendedores", url: "/extension" },
         ],
     },
     {
