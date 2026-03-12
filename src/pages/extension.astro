@@ -1,0 +1,234 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Banner from '../components/Banner.astro'
+---
+
+<BaseLayout
+    title="Extensión"
+    description="Propuestas de extensión del CRUB: cursos, talleres y actividades de formación continua para la comunidad."
+>
+  <Banner
+    title="Extensión"
+    description="Formación continua para la comunidad"
+    showButton={false}
+    heightClass="py-20"
+  />
+
+  <section class="max-w-7xl mx-auto py-12 px-4">
+    <div class="grid lg:grid-cols-3 gap-8">
+
+      <!-- Columna izquierda - Panel de información -->
+      <aside class="lg:col-span-1">
+        <div class="bg-white rounded-xl shadow-lg p-6 space-y-6">
+          <h3 class="text-xl font-bold text-gray-900 border-b pb-3">
+            Extensión CRUB
+          </h3>
+
+          <!-- Qué es -->
+          <div class="space-y-2">
+            <div class="flex items-center gap-2 text-gray-600 text-sm font-medium">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              ¿Qué es?
+            </div>
+            <p class="text-gray-700 text-sm pl-7 leading-relaxed">Actividades de formación continua, actualización y capacitación abiertas a la comunidad, articuladas con universidades, organismos públicos y entidades privadas.</p>
+          </div>
+
+          <!-- Destinatarios -->
+          <div class="space-y-2">
+            <div class="flex items-center gap-2 text-gray-600 text-sm font-medium">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              Destinatarios
+            </div>
+            <p class="text-gray-700 text-sm pl-7 leading-relaxed">Profesionales, docentes, estudiantes, emprendedores y público en general de Bolívar y la región.</p>
+          </div>
+
+          <!-- Modalidades -->
+          <div class="space-y-2">
+            <div class="flex items-center gap-2 text-gray-600 text-sm font-medium">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              Modalidades
+            </div>
+            <p class="text-gray-700 text-sm pl-7 leading-relaxed">Presencial y virtual, según cada propuesta.</p>
+          </div>
+
+          <!-- Cursos activos -->
+          <div class="space-y-2 pt-4 border-t">
+            <div class="flex items-center gap-2 text-gray-600 text-sm font-medium">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+              </svg>
+              Cursos disponibles
+            </div>
+            <p class="text-gray-900 font-semibold pl-7 text-2xl">3</p>
+          </div>
+
+          <!-- Categoría -->
+          <div class="space-y-2 pt-4 border-t">
+            <div class="flex items-center gap-2 text-gray-600 text-sm font-medium">
+              <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+              </svg>
+              Categoría
+            </div>
+            <span class="inline-block ml-7 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold">
+              Extensión
+            </span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Columna derecha - Contenido principal -->
+      <main class="lg:col-span-2 space-y-6">
+
+        <!-- Encabezado -->
+        <div class="bg-white rounded-xl shadow-lg p-8">
+          <h1 class="text-3xl font-bold mb-4 text-gray-900 border-b pb-4">Cursos</h1>
+          <p class="text-gray-700 text-lg leading-relaxed">
+            El CRUB articula con universidades, organismos públicos y entidades privadas para ofrecer
+            propuestas de formación continua orientadas a las necesidades del territorio. A continuación
+            se presentan los cursos desarrollados recientemente.
+          </p>
+        </div>
+
+        <!-- Curso 1 -->
+        <div class="bg-white rounded-xl shadow-lg p-8">
+          <div class="flex items-start gap-4 mb-6 border-b pb-5">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-gray-900 leading-snug">
+                Arte, historia y cultura visual: territorios y prácticas en la provincia de Buenos Aires
+              </h2>
+              <span class="inline-block mt-1 px-2 py-0.5 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold">2025</span>
+            </div>
+          </div>
+
+          <p class="text-gray-700 text-base leading-relaxed mb-5">
+            Curso de actualización sobre historia del arte bonaerense destinado a docentes y estudiantes de artes,
+            ciencias humanas y sociales; artistas, gestores culturales, trabajadores de la cultura y el turismo,
+            trabajadores de instituciones artísticas y culturales y público interesado.
+          </p>
+
+          <div class="space-y-3">
+            <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+              <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              <div>
+                <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Docente</p>
+                <p class="text-gray-800 text-sm font-semibold">María Guadalupe Suasnabar</p>
+                <p class="text-gray-600 text-sm">Doctora y Magíster en Historia del Arte Argentino y Latinoamericano — docente e investigadora de la UNICEN.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+              <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div>
+                <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Financiamiento</p>
+                <p class="text-gray-800 text-sm">Fondo Nacional de las Artes y Municipalidad de Bolívar</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Curso 2 -->
+        <div class="bg-white rounded-xl shadow-lg p-8">
+          <div class="flex items-start gap-4 mb-6 border-b pb-5">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-gray-900 leading-snug">
+                Cursos del Foro de la Justicia de Paz
+              </h2>
+              <span class="inline-block mt-1 px-2 py-0.5 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold">2025</span>
+            </div>
+          </div>
+
+          <p class="text-gray-700 text-base leading-relaxed mb-5">
+            Jornadas mensuales de capacitación para abogados, miembros del sistema judicial y estudiantes
+            avanzados de la carrera de abogacía.
+          </p>
+
+          <div class="space-y-3">
+            <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+              <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <div>
+                <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Modalidad</p>
+                <p class="text-gray-800 text-sm">Presencial — dos encuentros por mes durante 2025</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+              <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div>
+                <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Financiamiento</p>
+                <p class="text-gray-800 text-sm">Foro de la Justicia de Paz y aporte de los participantes</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Curso 3 -->
+        <div class="bg-white rounded-xl shadow-lg p-8">
+          <div class="flex items-start gap-4 mb-6 border-b pb-5">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-gray-900 leading-snug">
+                Curso para Emprendedores
+              </h2>
+              <span class="inline-block mt-1 px-2 py-0.5 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold">2024 / 2025</span>
+            </div>
+          </div>
+
+          <p class="text-gray-700 text-base leading-relaxed mb-5">
+            Destinado a la capacitación de integrantes de la Red de Emprendedores y otros interesados en el
+            desarrollo de ideas de negocio y gestión empresarial. Dictado por la Facultad de Ingeniería de la
+            Universidad Nacional del Centro de la Provincia de Buenos Aires (UNICEN).
+          </p>
+
+          <div class="space-y-3">
+            <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+              <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <div>
+                <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Modalidad</p>
+                <p class="text-gray-800 text-sm">Presencial — 8 encuentros en 2024, replicado en 6 encuentros en 2025</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+              <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div>
+                <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Financiamiento</p>
+                <p class="text-gray-800 text-sm">Municipalidad de Bolívar</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </section>
+</BaseLayout>

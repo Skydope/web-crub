@@ -39,8 +39,8 @@ const menuItems: SeccionMenu[] = [
         nombre: "Extensión",
         url: "/extension-crub",
         subcategorias: [
-            { nombre: "Arte, historia y cultura: territorios y prácticas en la Provincia de Buenos Aires", url: "/extension-crub/arte" },
-            { nombre: "Actualización para la Justicia de Paz Bonaerense", url: "/extension-crub/bonaerense" },
+            { nombre: "Arte, historia y cultura: territorios y prácticas en la Provincia de Buenos Aires", url: "/extension" },
+            { nombre: "Actualización para la Justicia de Paz Bonaerense", url: "/extension" },
         ],
     },
      {
