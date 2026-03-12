@@ -27,6 +27,14 @@ const menuItems: SeccionMenu[] = [
             { nombre: "UBA XXI", url: "/uba-xxi" },
         ],
     },
+      {
+        nombre: "Extensión",
+        url: "/extension",
+        subcategorias: [
+            { nombre: "Arte, historia y cultura: territorios y prácticas en la Provincia de Buenos Aires", url: "/extension" },
+            { nombre: "Actualización para la Justicia de Paz Bonaerense", url: "/extension" },
+        ],
+    },
     {
         nombre: "Residencias Estudiantiles",
         url: "/residencias",
@@ -35,14 +43,7 @@ const menuItems: SeccionMenu[] = [
             { nombre: "Casas en La Plata", url: "/residencias/residencia-la-plata" },
         ],
     },
-    {
-        nombre: "Extensión",
-        url: "/extension-crub",
-        subcategorias: [
-            { nombre: "Arte, historia y cultura: territorios y prácticas en la Provincia de Buenos Aires", url: "/extension" },
-            { nombre: "Actualización para la Justicia de Paz Bonaerense", url: "/extension" },
-        ],
-    },
+  
      {
         nombre: "Programas",
         url: "/propuestas",
