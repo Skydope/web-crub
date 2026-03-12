@@ -24,7 +24,7 @@ const menuItems: SeccionMenu[] = [
         subcategorias: [
             { nombre: "Carreras", url: "/propuestas/grado" },
             { nombre: "Diplomaturas", url: "/propuestas/diplomaturas" },
-            { nombre: "UBA XXI", url: "/propuestas/pregrado" },
+            { nombre: "UBA XXI", url: "/uba-xxi" },
         ],
     },
     {

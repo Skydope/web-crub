@@ -1,7 +1,7 @@
 ---
 titulo: "TECNICATURA EN ENFERMERÍA"
 categoria: "tecnicatura"
-nivel: "pregrado"
+nivel: "grado"
 universidad: "Escuela de Gobierno Floreal Ferrara"
 img: "floreal-ferrara"
 duracion: "3 años"

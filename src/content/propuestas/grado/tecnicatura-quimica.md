@@ -1,7 +1,7 @@
 ---
 titulo: "TECNICATURA UNIVERSITARIA EN QUÍMICA"
 categoria: "tecnicatura"
-nivel: "pregrado"
+nivel: "grado"
 universidad: "Universidad Nacional de Quilmes"
 img: "quilmes"
 duracion: "3 años"
