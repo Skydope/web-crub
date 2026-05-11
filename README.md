@@ -339,7 +339,7 @@ server-side (Netlify, Vercel), agregar configuración adicional.
 
   ---
 
-  **Intendencia Municipal de Bolívar**
+  <img src="public/svg/logo-muni.svg" alt="CRUB" width="200" />
 
 </div>
 
