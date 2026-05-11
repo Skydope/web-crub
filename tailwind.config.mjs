@@ -17,6 +17,20 @@ export default {
           900: '#0084a0',
         },
 
+        'institucional-oro': {
+          DEFAULT: '#C5960C',
+          50: '#fef9e7',
+          100: '#fdf0c8',
+          200: '#fbe38a',
+          300: '#f9d04c',
+          400: '#f7bc1e',
+          500: '#C5960C',
+          600: '#9e760a',
+          700: '#775708',
+          800: '#4f3905',
+          900: '#281c03',
+        },
+
         'institucional-gris': {
           DEFAULT: '#3d3d3d',
           50: '#f6f6f6',
@@ -32,8 +46,8 @@ export default {
         },
       },
       fontFamily: {
-        'encabezado': ['Gotham Roundedb', 'sans-serif'],
-        'cuerpo': ['Gotham Roundedm', 'sans-serif'],
+        'encabezado': ['Montserrat', 'system-ui', 'sans-serif'],
+        'cuerpo': ['Inter', 'system-ui', 'sans-serif'],
       },
     },
   },

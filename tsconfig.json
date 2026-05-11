@@ -5,7 +5,7 @@
     "**/*"
   ],
   "tailwindCSS": {
-    "config": "./tailwind.config.cjs" // Ruta explícita
+    "config": "./tailwind.config.mjs"
   },
   "exclude": [
     "dist"

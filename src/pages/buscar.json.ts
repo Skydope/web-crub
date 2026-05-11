@@ -22,7 +22,7 @@ export async function GET() {
                 titulo: p.data.titulo,
                 descripcion: p.data.universidad,
                 categoria: p.data.categoria,
-                imagen: p.data.img,
+                imagen: `/img/logos-universidades/${p.data.img}.jpg`,
                 content: p.body,
             };
         }),

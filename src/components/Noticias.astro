@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import { formatearFecha, ordenarPorFecha } from "../utils/date";
 
 const noticias = await getCollection("noticias");
-const noticiasOrdenadas = ordenarPorFecha(noticias);
+const noticiasOrdenadas = ordenarPorFecha(noticias).slice(0, 6);
 ---
 
 <section id="noticias" class="py-16 bg-white scroll-mt-16">
