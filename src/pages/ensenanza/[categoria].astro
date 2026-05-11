@@ -21,10 +21,10 @@ const propuestasFiltradas = propuestas.filter((p) => p.id.split("/")[0] === carp
 const tituloBanner = TITULOS[categoria] ?? "Propuestas académicas";
 ---
 
-<Layout title={tituloBanner} description="">
+<Layout title={tituloBanner} description={`${tituloBanner} del CRUB: conoce las propuestas, universidades, duracion y modalidades disponibles en Bolivar.`}>
 <Banner
   title={tituloBanner}
-  description=""
+  description={`Explora nuestras ${tituloBanner.toLowerCase()} disponibles`}
   showButton={false}
 />
 
