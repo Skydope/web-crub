@@ -1,7 +1,7 @@
 ---
 titulo: "TECNICATURA UNIVERSITARIA EN AUTOMATIZACIÓN Y CONTROL"
 categoria: "tecnicatura"
-nivel: "pregrado"
+nivel: "grado"
 universidad: "Universidad Nacional General Sarmiento"
 img: "ungs"
 duracion: "3 años"

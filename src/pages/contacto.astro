@@ -2,6 +2,26 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 import Banner from '../components/Banner.astro'
 import Map from '../components/Map.astro'
+import Faq from '../components/Faq.astro'
+
+const faqsContacto = [
+  {
+    question: "¿Cómo puedo inscribirme en una carrera?",
+    answer: "Puedes inscribirte completando el formulario en línea en nuestra sección de Inscripciones o acercándote personalmente a nuestras oficinas durante el horario de atención."
+  },
+  {
+    question: "¿Qué carreras ofrece el CRUB?",
+    answer: "Ofrecemos diversas carreras de grado y posgrado. Visita nuestra sección de Oferta Académica para conocer el listado completo de carreras disponibles."
+  },
+  {
+    question: "¿Tienen becas disponibles?",
+    answer: "Sí, contamos con diversos programas de becas para estudiantes. Comunícate con nosotros para conocer los requisitos y convocatorias vigentes."
+  },
+  {
+    question: "¿Cuál es el horario de atención?",
+    answer: "Nuestro horario de atención es de lunes a viernes de 8:00 a 18:00 horas, y los sábados de 9:00 a 13:00 horas."
+  }
+];
 ---
 
 <BaseLayout 
@@ -22,7 +42,7 @@ import Map from '../components/Map.astro'
         <div class="bg-white rounded-lg shadow-lg p-8">
           <h2 class="text-3xl font-bold text-blue-900 mb-6">Envíanos un mensaje</h2>
           
-          <form class="space-y-6">
+          <form action="mailto:crub@bolivar.gob.ar" method="POST" enctype="text/plain" class="space-y-6">
             <div>
               <label for="nombre" class="block text-sm font-semibold text-blue-900 mb-2">
                 Nombre completo *
@@ -249,87 +269,7 @@ import Map from '../components/Map.astro'
     </div>
   </section>
 
-  <!-- Sección de preguntas frecuentes -->
-  <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
-          Preguntas frecuentes
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Encuentra respuestas rápidas a las consultas más comunes
-        </p>
-      </div>
-
-      <div class="max-w-3xl mx-auto space-y-4">
-        <details class="bg-gray-50 rounded-lg p-6 group">
-          <summary class="font-semibold text-blue-900 cursor-pointer list-none flex items-center justify-between">
-            <span>¿Cómo puedo inscribirme en una carrera?</span>
-            <svg 
-              class="h-5 w-5 transform group-open:rotate-180 transition-transform" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </summary>
-          <p class="mt-4 text-gray-600">
-            Puedes inscribirte completando el formulario en línea en nuestra sección de Inscripciones o acercándote personalmente a nuestras oficinas durante el horario de atención.
-          </p>
-        </details>
-
-        <details class="bg-gray-50 rounded-lg p-6 group">
-          <summary class="font-semibold text-blue-900 cursor-pointer list-none flex items-center justify-between">
-            <span>¿Qué carreras ofrece el CRUB?</span>
-            <svg 
-              class="h-5 w-5 transform group-open:rotate-180 transition-transform" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </summary>
-          <p class="mt-4 text-gray-600">
-            Ofrecemos diversas carreras de grado y posgrado. Visita nuestra sección de Oferta Académica para conocer el listado completo de carreras disponibles.
-          </p>
-        </details>
-
-        <details class="bg-gray-50 rounded-lg p-6 group">
-          <summary class="font-semibold text-blue-900 cursor-pointer list-none flex items-center justify-between">
-            <span>¿Tienen becas disponibles?</span>
-            <svg 
-              class="h-5 w-5 transform group-open:rotate-180 transition-transform" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </summary>
-          <p class="mt-4 text-gray-600">
-            Sí, contamos con diversos programas de becas para estudiantes. Comunícate con nosotros para conocer los requisitos y convocatorias vigentes.
-          </p>
-        </details>
-
-        <details class="bg-gray-50 rounded-lg p-6 group">
-          <summary class="font-semibold text-blue-900 cursor-pointer list-none flex items-center justify-between">
-            <span>¿Cuál es el horario de atención?</span>
-            <svg 
-              class="h-5 w-5 transform group-open:rotate-180 transition-transform" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </summary>
-          <p class="mt-4 text-gray-600">
-            Nuestro horario de atención es de lunes a viernes de 8:00 a 18:00 horas, y los sábados de 9:00 a 13:00 horas.
-          </p>
-        </details>
-      </div>
-    </div>
-  </section>
+  <Faq
+    faqs={faqsContacto}
+  />
 </BaseLayout>

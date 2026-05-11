@@ -1,18 +1,21 @@
 ---
 import Carousel from './Carousel.astro';
 import { getCollection } from 'astro:content';
+import { CARPETA_A_URL } from '../utils/niveles';
 
 const propuestas = await getCollection('propuestas');
 
-const items = propuestas.map(p => ({
-  img: p.data.img,
-  titulo: p.data.titulo,
-  universidad: p.data.universidad,
-  duracion: p.data.duracion,
-  modalidad: p.data.modalidad,
-  nivel: p.data.nivel,
-  url: p.data.url,
-}));
+const items = propuestas
+  .filter(p => p.data.nivel !== "pregrado")
+  .map(p => ({
+    img: p.data.img,
+    titulo: p.data.titulo,
+    universidad: p.data.universidad,
+    duracion: p.data.duracion,
+    modalidad: p.data.modalidad,
+    nivel: CARPETA_A_URL[p.data.nivel] ?? p.data.nivel,
+    url: p.data.url,
+  }));
 ---
 
 <section class="py-12 bg-gray-100">

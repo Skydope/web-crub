@@ -2,40 +2,26 @@
 import Layout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import Banner from "../../components/Banner.astro";
+import { URL_A_CARPETA, TITULOS } from "../../utils/niveles";
 
-// 1 Generamos las rutas estáticas
 export async function getStaticPaths() {
-  // Carpetas válidas dentro de content/propuestas
-  const categorias = ["grado", "pregrado", "diplomaturas"];
+  const categorias = ["carreras", "diplomaturas"];
 
   return categorias.map((categoria) => ({
     params: { categoria },
   }));
 }
 
-// 2 Obtenemos el parámetro de la URL
 const { categoria } = Astro.params;
-
-// 3 Obtenemos todas las propuestas
 const propuestas = await getCollection("propuestas");
 
-// 4 Filtramos por subcarpeta (primer parte del id)
-const propuestasFiltradas = propuestas.filter((p) => {
-  const carpeta = p.id.split("/")[0];
-  return carpeta === categoria;
-});
+const carpeta = URL_A_CARPETA[categoria];
+const propuestasFiltradas = propuestas.filter((p) => p.id.split("/")[0] === carpeta);
 
-const titulos = {
-  grado: "Carreras",
-  pregrado: "UBA XXI",
-  diplomaturas: "Diplomaturas"
-};
-
-const tituloBanner = titulos[categoria] ?? "Propuestas académicas";
+const tituloBanner = TITULOS[categoria] ?? "Propuestas académicas";
 ---
 
-
-<Layout>
+<Layout title={tituloBanner} description="">
 <Banner
   title={tituloBanner}
   description=""
@@ -43,11 +29,9 @@ const tituloBanner = titulos[categoria] ?? "Propuestas académicas";
 />
 
 <section class="max-w-5xl mx-auto py-20 min-h-[70vh]">
-
-
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {propuestasFiltradas.map((p) => (
-        <a href={`/propuestas/${categoria}/${p.slug.split("/").pop()}`}>
+        <a href={`/ensenanza/${categoria}/${p.slug.split("/").pop()}`}>
         <article class="p-4 bg-white rounded-lg shadow-md">
           <img 
             src={`/img/logos-universidades/${p.data.img}.jpg`} alt={p.data.universidad} 
@@ -58,7 +42,6 @@ const tituloBanner = titulos[categoria] ?? "Propuestas académicas";
           <p class="text-sm">{p.data.duracion}</p>
           <p class="text-sm">{p.data.modalidad}</p>
           <p class="text-sm">{p.data.financiamiento}</p>
-          <p class="text-sm">{p.data.cohorte}</p>
         </article>
         </a>
       ))}

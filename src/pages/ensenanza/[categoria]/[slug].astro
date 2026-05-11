@@ -3,28 +3,33 @@ import Layout from "../../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import Banner from "../../../components/Banner.astro";
 import Faq from "../../../components/Faq.astro";
+import { CARPETA_A_URL, TITULOS } from "../../../utils/niveles";
 
 export async function getStaticPaths() {
   const propuestas = await getCollection("propuestas");
 
-  const paths = propuestas.map((p) => { 
-    return {
-      params: {
-        categoria: p.data.nivel,
-        slug: p.slug.split("/").pop(),
-      },
-      props: {
-        propuesta: p,
-        categoria: p.data.nivel,
-      },
-    };
-  });
+  const paths = propuestas
+    .filter((p) => p.data.nivel !== "pregrado")
+    .map((p) => {
+      const categoriaUrl = CARPETA_A_URL[p.data.nivel] ?? p.data.nivel;
+
+      return {
+        params: {
+          categoria: categoriaUrl,
+          slug: p.slug.split("/").pop(),
+        },
+        props: {
+          propuesta: p,
+          categoria: categoriaUrl,
+        },
+      };
+    });
 
   return paths;
 }
 
 const { propuesta, categoria } = Astro.props;
-const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
 const faqsCarrera = [
   {
@@ -48,10 +53,9 @@ const faqsCarrera = [
     answer: "Las inscripciones para el ciclo lectivo se abren en diciembre y enero. Para el segundo cuatrimestre, hay un período especial en junio-julio. Te recomendamos estar atento a nuestras redes sociales y sitio web para las fechas exactas."
   }
 ];
-
 ---
 
-<Layout>
+<Layout title={propuesta.data.titulo} description={propuesta.data.universidad}>
   <Banner
     title={propuesta.data.titulo}
     description={propuesta.data.universidad}
@@ -60,9 +64,8 @@ const faqsCarrera = [
   />
 
   <section class="max-w-7xl mx-auto py-12 px-4">
-    <!-- Botón volver -->
     <a 
-      href={`/propuestas/${categoria}`} 
+      href={`/ensenanza/${categoria}`} 
       class="inline-flex items-center gap-2 mb-8 bg-blue-900 text-white px-2 mt-1 py-1 rounded-lg font-semibold hover:bg-blue-600  transition-all duration-300 transform hover:scale-105 shadow-lg"
     >
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -72,9 +75,7 @@ const faqsCarrera = [
     </a>
 
     <div class="grid lg:grid-cols-3 gap-8">
-      <!-- Columna izquierda - Panel de información -->
       <aside class="lg:col-span-1">
-        <!-- Imagen destacada -->
         <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-6">
           <img 
             src={`/img/logos-universidades/${propuesta.data.img}.jpg`} 
@@ -83,13 +84,11 @@ const faqsCarrera = [
           />
         </div>
 
-        <!-- Panel de datos clave -->
         <div class="bg-white rounded-xl shadow-lg p-6 space-y-6">
           <h3 class="text-xl font-bold text-gray-900 mb-4 border-b pb-3">
             Información General
           </h3>
 
-          <!-- Universidad -->
           <div class="space-y-2">
             <div class="flex items-center gap-2 text-gray-600 text-sm font-medium">
               <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -100,7 +99,6 @@ const faqsCarrera = [
             <p class="text-gray-900 font-semibold pl-7">{propuesta.data.universidad}</p>
           </div>
 
-          <!-- Duración -->
           <div class="space-y-2">
             <div class="flex items-center gap-2 text-gray-600 text-sm font-medium">
               <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -111,7 +109,6 @@ const faqsCarrera = [
             <p class="text-gray-900 font-semibold pl-7">{propuesta.data.duracion}</p>
           </div>
 
-          <!-- Modalidad -->
           <div class="space-y-2">
             <div class="flex items-center gap-2 text-gray-600 text-sm font-medium">
               <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -122,7 +119,6 @@ const faqsCarrera = [
             <p class="text-gray-900 font-semibold pl-7">{propuesta.data.modalidad}</p>
           </div>
 
-          <!-- Financiamiento -->
           <div class="space-y-2">
             <div class="flex items-center gap-2 text-gray-600 text-sm font-medium">
               <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -133,14 +129,12 @@ const faqsCarrera = [
             <p class="text-gray-900 font-semibold pl-7">{propuesta.data.financiamiento}</p>
           </div>
 
-          <!--Botón inscripción -->
           <div class="space-y-2 pt-4 border-t">
             <div class="flex items-center gap-2 text-gray-600 text-sm font-medium">
             <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
               Inscripción
-              
             </div>
             <a 
       href="/inscripciones" 
@@ -153,7 +147,6 @@ const faqsCarrera = [
     </a>
           </div>
 
-          <!-- Nivel/Categoría -->
           <div class="space-y-2 pt-4 border-t">
             <div class="flex items-center gap-2 text-gray-600 text-sm font-medium">
               <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -161,7 +154,7 @@ const faqsCarrera = [
               </svg>
               Categoría
             </div>
-            <a href={`/oferta/${categoria}`}
+            <a href={`/ensenanza/${categoria}`}>
             <span class="inline-block ml-7 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold">
               {capitalize(categoria)}
             </span>
@@ -170,26 +163,14 @@ const faqsCarrera = [
         </div>
       </aside>
 
-      <!-- Columna derecha - Contenido principal -->
       <main class="lg:col-span-2">
         <div class="bg-white rounded-xl shadow-lg p-8">
           <h1 class="text-3xl font-bold mb-6 text-gray-900 border-b pb-4">
             {propuesta.data.titulo}
           </h1>
-          <a 
-      href="/inscripciones" 
-      class="inline-flex items-center gap-2 mb-8 bg-blue-900 text-white px-2 mt-1 py-1 rounded-lg font-semibold hover:bg-blue-600  transition-all duration-300 transform hover:scale-105 shadow-lg"
-    >
-      <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-</svg>
-      Inscribirme
-    </a>
-          <!-- Contenido del body -->
           <article class="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-blue-600 prose-strong:text-gray-900">
             {propuesta.body}
           </article>
-          <!-- Preguntas Frecuentes -->
   <Faq
   title="Preguntas frecuentes"
   subtitle="Resolvemos tus dudas sobre inscripción, cursada y más"
@@ -197,7 +178,7 @@ const faqsCarrera = [
 />
         </div>
          <a 
-      href={`/propuestas/${categoria}`} 
+      href={`/ensenanza/${categoria}`} 
       class="lg:hidden flex justify-center  gap-2 mb-8 bg-blue-900 text-white px-2 mt-4 py-1 rounded-lg font-semibold hover:bg-blue-600  transition-all duration-300 transform hover:scale-105 shadow-lg"
     >
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

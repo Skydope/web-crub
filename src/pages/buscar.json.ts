@@ -1,34 +1,34 @@
-import matter from "gray-matter";
+import { getCollection } from "astro:content";
 
 export async function GET() {
-    // Astro importa TODOS los .md recursivamente
-    const modules = import.meta.glob("/src/content/**/*.md", {
-        eager: true,
-        query: "?raw" // Importamos el archivo crudo como texto
-    });
+    const noticias = await getCollection("noticias");
+    const propuestas = await getCollection("propuestas");
 
-    const items = [];
+    const items = [
+        ...noticias.map((n) => ({
+            slug: `noticias/${n.slug}`,
+            titulo: n.data.titulo,
+            descripcion: n.data.descripcion,
+            categoria: n.data.categoria,
+            imagen: n.data.imagen,
+            content: n.body,
+        })),
+        ...propuestas.map((p) => {
+            const carpeta = p.id.split("/")[0];
+            const urlCarpeta = carpeta === "grado" ? "carreras" : carpeta;
 
-    for (const [filepath, module] of Object.entries(modules)) {
-        const raw = module.default as string;
-
-        const parsed = matter(raw);
-
-        const slug = filepath
-            .replace("/src/content/", "")
-            .replace(".md", "");
-
-        items.push({
-            slug,
-            titulo: parsed.data.titulo || "",
-            descripcion: parsed.data.descripcion || "",
-            categoria: parsed.data.categoria || "",
-            imagen: parsed.data.img || parsed.data.imagen || null,
-            content: parsed.content || ""
-        });
-    }
+            return {
+                slug: `ensenanza/${urlCarpeta}/${p.slug.split("/").pop()}`,
+                titulo: p.data.titulo,
+                descripcion: p.data.universidad,
+                categoria: p.data.categoria,
+                imagen: p.data.img,
+                content: p.body,
+            };
+        }),
+    ];
 
     return new Response(JSON.stringify(items), {
-        headers: { "Content-Type": "application/json" }
+        headers: { "Content-Type": "application/json" },
     });
 }

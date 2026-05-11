@@ -1,19 +1,110 @@
 ---
 import Banner from '../components/Banner.astro';
-import Noticias from '../components/Noticias.astro';
-import BaseLayout from '../layouts/BaseLayout.astro'; 
+import Faq from '../components/Faq.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const faqsInscripcion = [
+  {
+    question: "¿Qué necesito para inscribirme?",
+    answer: "Necesitás: certificado de secundario completo legalizado, fotocopia de DNI, 2 fotos 4x4, y completar el formulario de inscripción. Para estudiantes extranjeros, se requiere certificado de estudios apostillado y traducido por traductor público."
+  },
+  {
+    question: "¿Cuándo comienzan las inscripciones?",
+    answer: "Las inscripciones para el ciclo lectivo se abren en diciembre y enero. Para el segundo cuatrimestre, hay un período especial en junio-julio. Te recomendamos estar atento a nuestras redes sociales y sitio web para las fechas exactas."
+  },
+  {
+    question: "¿Cuál es el costo de las carreras?",
+    answer: "Las carreras son gratuitas. Solo debés abonar el derecho a examen por materia rendida. Además, contamos con programas de becas para estudiantes que cumplan con los requisitos establecidos."
+  },
+  {
+    question: "¿Dónde realizo la inscripción?",
+    answer: "La inscripción se realiza de forma presencial en nuestra sede de Av. Cacique Coliqueo 940, Bolívar, de lunes a viernes de 8:00 a 21:00 y sábados de 9:00 a 13:00. También podés comunicarte por teléfono o email para más información."
+  }
+];
 ---
-<BaseLayout title="Inscripciones" description="Página de inscripciones en la que se muestra la información de las cursadas abiertas en el CRUB.">
-    
+
+<BaseLayout title="Inscripciones" description="Información sobre inscripciones a carreras y cursos del Centro Regional Universitario Bolívar.">
+
 <Banner
   title="Inscripciones"
-  description="Inscripciones abiertas de 2026."
-  showButton={false}
+  description="Formá parte del CRUB. Conocé los requisitos y fechas de inscripción para el ciclo lectivo 2026."
+  showButton={true}
+  buttonText="Ver oferta académica"
+  buttonLink="/oferta"
 />
 
-    
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12">
 
+      <!-- Requisitos -->
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b pb-4">Requisitos de inscripción</h2>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-900 flex items-center justify-center text-white font-bold text-sm">1</span>
+            <p class="text-gray-700 pt-0.5">Certificado de estudios secundarios completos (legalizado).</p>
+          </li>
+          <li class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-900 flex items-center justify-center text-white font-bold text-sm">2</span>
+            <p class="text-gray-700 pt-0.5">Fotocopia de DNI (frente y dorso).</p>
+          </li>
+          <li class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-900 flex items-center justify-center text-white font-bold text-sm">3</span>
+            <p class="text-gray-700 pt-0.5">Dos fotos 4x4 actualizadas.</p>
+          </li>
+          <li class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-900 flex items-center justify-center text-white font-bold text-sm">4</span>
+            <p class="text-gray-700 pt-0.5">Completar el formulario de inscripción en nuestra sede.</p>
+          </li>
+        </ul>
+      </div>
 
+      <!-- Fechas y sede -->
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b pb-4">Fechas y sede</h2>
+        <div class="space-y-6">
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <h3 class="font-semibold text-blue-900 mb-2">Inscripción primer cuatrimestre</h3>
+            <p class="text-gray-700">Diciembre y enero</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <h3 class="font-semibold text-blue-900 mb-2">Inscripción segundo cuatrimestre</h3>
+            <p class="text-gray-700">Junio y julio</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <h3 class="font-semibold text-blue-900 mb-2">Sede CRUB</h3>
+            <p class="text-gray-700">Av. Cacique Coliqueo 940, Bolívar, Buenos Aires</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded-lg">
+            <h3 class="font-semibold text-blue-900 mb-2">Horario de atención</h3>
+            <p class="text-gray-700">Lunes a viernes: 8:00 a 21:00</p>
+            <p class="text-gray-700">Sábados: 9:00 a 13:00</p>
+          </div>
+        </div>
+      </div>
 
-  
+    </div>
+
+    <!-- Oferta académica link -->
+    <div class="text-center mt-12">
+      <a
+        href="/oferta"
+        class="inline-flex items-center gap-2 bg-blue-900 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-800 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+        Ver oferta académica completa
+      </a>
+    </div>
+  </div>
+</section>
+
+<Faq
+  title="Preguntas frecuentes sobre inscripción"
+  subtitle="Resolvemos tus dudas sobre el proceso de inscripción"
+  faqs={faqsInscripcion}
+/>
+
 </BaseLayout>

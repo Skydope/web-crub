@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://crub.edu.ar/sitemap.xml

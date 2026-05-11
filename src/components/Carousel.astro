@@ -21,7 +21,7 @@ const { items } = Astro.props;
       {items.concat(items).map((item, i) => (
         <div class="min-w-[300px] sm:min-w-[350px] lg:min-w-[400px]   p-4 flex-shrink-0" key={i}>
           <div class="bg-white shadow-lg rounded-xl overflow-hidden">
-            <a href={`/propuestas/${item.nivel}/${item.url}`}  rel="noopener noreferrer"> 
+            <a href={`/ensenanza/${item.nivel}/${item.url}`}  rel="noopener noreferrer"> 
 
             <img
             src={`/img/logos-universidades/${item.img}.jpg`}

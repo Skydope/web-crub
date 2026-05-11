@@ -1,31 +1,9 @@
 ---
 import { getCollection } from "astro:content";
+import { formatearFecha, ordenarPorFecha } from "../utils/date";
 
-// Obtener noticias
 const noticias = await getCollection("noticias");
-
-// Ordenar por fecha (dd-mm-yyyy → Date → ordenar)
-const noticiasOrdenadas = noticias.sort((a, b) => {
-  const [diaA, mesA, anioA] = a.data.fecha.split("-").map(Number);
-  const [diaB, mesB, anioB] = b.data.fecha.split("-").map(Number);
-
-  const fechaA = new Date(anioA, mesA - 1, diaA);
-  const fechaB = new Date(anioB, mesB - 1, diaB);
-
-  return fechaB - fechaA; // más reciente primero
-});
-
-// Función para formatear fecha localmente
-function formatearFecha(fechaStr) {
-  const [dia, mes, anio] = fechaStr.split("-").map(Number);
-  const fecha = new Date(anio, mes - 1, dia);
-
-  return fecha.toLocaleDateString("es-AR", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-}
+const noticiasOrdenadas = ordenarPorFecha(noticias);
 ---
 
 <section id="noticias" class="py-16 bg-white scroll-mt-16">

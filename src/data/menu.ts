@@ -20,10 +20,10 @@ const menuItems: SeccionMenu[] = [
     },
     {
         nombre: "Enseñanza",
-        url: "/propuestas",
+        url: "/ensenanza/carreras",
         subcategorias: [
-            { nombre: "Carreras", url: "/propuestas/grado" },
-            { nombre: "Diplomaturas", url: "/propuestas/diplomaturas" },
+            { nombre: "Carreras", url: "/ensenanza/carreras" },
+            { nombre: "Diplomaturas", url: "/ensenanza/diplomaturas" },
             { nombre: "UBA XXI", url: "/uba-xxi" },
         ],
     },
@@ -31,28 +31,19 @@ const menuItems: SeccionMenu[] = [
         nombre: "Extensión",
         url: "/extension",
         subcategorias: [
-            { nombre: "Arte, historia y cultura: territorios y prácticas en la Provincia de Buenos Aires", url: "/extension" },
-            { nombre: "Actualización para la Justicia de Paz Bonaerense", url: "/extension" },
+            { nombre: "Arte, historia y cultura", url: "/extension" },
+            { nombre: "Justicia de Paz Bonaerense", url: "/extension" },
             { nombre: "Curso para Emprendedores", url: "/extension" },
         ],
     },
     {
         nombre: "Residencias Estudiantiles",
-        url: "/residencias",
+        url: "/residencias/residencia-azul",
         subcategorias: [
             { nombre: "Casas en Azul", url: "/residencias/residencia-azul" },
             { nombre: "Casas en La Plata", url: "/residencias/residencia-la-plata" },
         ],
     },
-  
-     {
-        nombre: "Programas",
-        url: "/propuestas",
-        subcategorias: [
-            { nombre: "Proyecto preparatoria", url: "/propuestas/grado" },
-        ],
-    },
-
 ];
 
 export default menuItems;

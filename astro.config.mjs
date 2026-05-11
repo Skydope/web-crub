@@ -1,11 +1,15 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import react from '@astrojs/react';
-
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [
-    react(),
-  ],
+  site: 'https://crub.edu.ar',
+  integrations: [sitemap()],
+  redirects: {
+    '/propuestas': '/ensenanza/carreras',
+    '/propuestas/grado': '/ensenanza/carreras',
+    '/propuestas/pregrado': '/ensenanza/carreras',
+    '/propuestas/diplomaturas': '/ensenanza/diplomaturas',
+  },
 });

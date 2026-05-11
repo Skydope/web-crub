@@ -1,5 +1,6 @@
 ---
 const { title, description } = Astro.props
+const fullTitle = `CRUB - ${title}`
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import '../styles/global.css'
@@ -13,7 +14,18 @@ import '../styles/global.css'
         <meta name="generator" content={Astro.generator} />
         <meta name="description" content={description} />
         <link rel="icon" href="/favicon.svg" />
-        <title>CRUB - {title}</title>
+        <title>{fullTitle}</title>
+
+        <!-- Open Graph -->
+        <meta property="og:title" content={fullTitle} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="CRUB" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={fullTitle} />
+        <meta name="twitter:description" content={description} />
     </head>
     <body class="bg-white text-gray-900">
         <Header />
