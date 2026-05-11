@@ -60,7 +60,7 @@
     <!-- Panel de resultados con sombra más profesional y bordes redondeados -->
     <div
         id="search-results-box"
-        class="absolute top-14 right-0 bg-white shadow-2xl rounded-xl w-72 max-h-96 overflow-y-auto hidden z-50 border border-gray-100 backdrop-blur-sm animate-in fade-in slide-in-from-top-2 duration-300"
+        class="absolute top-14 right-0 bg-white shadow-2xl rounded-xl w-72 max-h-96 overflow-y-auto hidden z-50 border border-gray-100 backdrop-blur-sm"
     >
         <div class="p-3 space-y-2"></div>
     </div>
@@ -78,12 +78,18 @@
     const submitButton = document.getElementById("search-submit")
     const lupa = document.getElementById("search-lupa-icon")
 
-    // Fix mobile cache
-    const data = await fetch(`/buscar.json?ts=${Date.now()}`, {
-      cache: "no-store",
-    }).then((res) => res.json())
+    let fuse = null;
+    let dataLoading = false;
 
-    const fuse = createFuse(data)
+    async function ensureData() {
+      if (fuse) return;
+      if (dataLoading) return;
+      dataLoading = true;
+      const data = await fetch(`/buscar.json?ts=${Date.now()}`, {
+        cache: "no-store",
+      }).then((res) => res.json());
+      fuse = createFuse(data);
+    }
 
     // Abrir/cerrar
     button.addEventListener("click", () => {
@@ -98,6 +104,7 @@
         // Abriendo: ocultar lupa, mostrar formulario
         form.classList.remove("opacity-0", "invisible", "-translate-x-4", "scale-95")
         lupa.classList.add("scale-0", "opacity-0")
+        ensureData()
         setTimeout(() => input.focus({ preventScroll: true }), 150)
       }
     })
@@ -113,7 +120,7 @@
     })
 
     // Búsqueda en dropdown
-    const handleQuery = () => {
+    const handleQuery = async () => {
       const query = input.value.trim()
 
       if (query.length < 2) {
@@ -121,6 +128,7 @@
         return
       }
 
+      await ensureData()
       const results = fuse.search(query)
 
       if (results.length === 0) {
