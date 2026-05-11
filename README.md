@@ -340,6 +340,7 @@ server-side (Netlify, Vercel), agregar configuración adicional.
   ---
 
   <img src="public/svg/logo-muni.svg" alt="CRUB" width="200" />
+  <img src="public/svg/logo-edu.svg" alt="CRUB" width="200" />
 
 </div>
 
